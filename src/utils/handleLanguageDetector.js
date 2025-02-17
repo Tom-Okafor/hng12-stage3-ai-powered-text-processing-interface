@@ -6,7 +6,6 @@ export async function handleLanguageDetector(text) {
   }
 
   // check if feature is available
-  let detector;
   const languageDetectorCapabilities =
     await self.ai.languageDetector.capabilities();
   const canDetect = languageDetectorCapabilities.available;
@@ -14,24 +13,19 @@ export async function handleLanguageDetector(text) {
   if (canDetect === "no")
     return "Sorry this feature is not available for your device.";
 
-  if (canDetect === "readily") {
-    detector = await self.ai.languageDetector.create();
-  } else {
-    detector = await self.ai.languageDetector.create({
-      monitor(m) {
-        m.addEventListener("downloadprogress", (e) => {
-          console.log(`Downloaded ${e.loaded} of ${e.total} bytes.`);
-        });
-      },
-    });
-  }
+  const detector = await self.ai.languageDetector.create();
 
   // get the detected language and confidence level
-  const result = (await detector.detect(text.trim()))[0];
-  const { confidence, detectedLanguage } = result;
-  const resultConfidence = (confidence * 100).toFixed(1);
-  const fullDetectedLanguage = getFullNameOfDetectedLanguage(detectedLanguage);
-  return { resultConfidence, fullDetectedLanguage };
+  try {
+    const result = (await detector.detect(text.trim()))[0];
+    const { confidence, detectedLanguage } = result;
+    const resultConfidence = (confidence * 100).toFixed(1);
+    const fullDetectedLanguage =
+      getFullNameOfDetectedLanguage(detectedLanguage);
+    return { resultConfidence, fullDetectedLanguage, detectedLanguage };
+  } catch (error) {
+    throw new Error(error.message);
+  }
 
   // get the readable form of detected language from the language abbreviation
   function getFullNameOfDetectedLanguage(language) {
