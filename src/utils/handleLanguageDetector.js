@@ -16,16 +16,12 @@ export async function handleLanguageDetector(text) {
   const detector = await self.ai.languageDetector.create();
 
   // get the detected language and confidence level
-  try {
-    const result = (await detector.detect(text.trim()))[0];
-    const { confidence, detectedLanguage } = result;
-    const resultConfidence = (confidence * 100).toFixed(1);
-    const fullDetectedLanguage =
-      getFullNameOfDetectedLanguage(detectedLanguage);
-    return { resultConfidence, fullDetectedLanguage, detectedLanguage };
-  } catch (error) {
-    throw new Error(error.message);
-  }
+
+  const result = (await detector.detect(text.trim()))[0];
+  const { confidence, detectedLanguage } = result;
+  const resultConfidence = (confidence * 100).toFixed(1);
+  const fullDetectedLanguage = getFullNameOfDetectedLanguage(detectedLanguage);
+  return { resultConfidence, fullDetectedLanguage, detectedLanguage };
 
   // get the readable form of detected language from the language abbreviation
   function getFullNameOfDetectedLanguage(language) {
