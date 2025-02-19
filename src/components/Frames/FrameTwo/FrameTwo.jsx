@@ -1,15 +1,22 @@
-export default function FrameTwo() {
+import PropTypes from "prop-types";
+export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
   return (
-    <section className="min-h-dvh flex flex-col gap-8 px-8 py-8 items-center justify-center">
+    <section
+      className={`min-h-dvh ${currentFrame === 2 ? "flex" : "hidden"} ${
+        currentFrame === 2 &&
+        isCurrentFrameChanging === true &&
+        "animate-disappear"
+      } flex-col gap-8 px-8 py-8 items-center justify-center`}
+    >
       <img
         src="d-frame.png"
         alt="person with a robot"
-        className="sm:object-cover sm:h-[60vh] h-auto object-contain"
+        className="sm:object-cover sm:h-[60vh] h-auto object-contain animate-appear"
       />
-      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#e93d4f] antialiased">
+      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#e93d4f] antialiased animate-heading">
         Breaking Language Barriers, One Word at a Time.
       </h1>
-      <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%]">
+      <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%] animate-text opacity-0">
         <span className="text-[#3aa3cb] font-black tracking-widest font-yatra text-xl md:text-2xl">
           LinguaSwift
         </span>{" "}
@@ -22,3 +29,8 @@ export default function FrameTwo() {
     </section>
   );
 }
+
+FrameTwo.propTypes = {
+  currentFrame: PropTypes.number.isRequired,
+  isCurrentFrameChanging: PropTypes.bool.isRequired,
+};

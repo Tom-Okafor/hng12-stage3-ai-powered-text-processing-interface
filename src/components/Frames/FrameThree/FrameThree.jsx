@@ -1,15 +1,23 @@
-export default function FrameThree() {
+import PropTypes from "prop-types";
+
+export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
   return (
-    <section className="min-h-dvh flex flex-col gap-8 px-8 py-8 items-center justify-center">
+    <section
+      className={`min-h-dvh ${currentFrame === 3 ? "flex" : "hidden"} ${
+        currentFrame === 3 &&
+        isCurrentFrameChanging === true &&
+        "animate-disappear"
+      } flex-col gap-8 px-8 py-8 items-center justify-center`}
+    >
       <img
         src="e-frame.png"
         alt="person with a robot"
-        className="sm:object-cover sm:h-[60vh] h-auto object-contain"
+        className="sm:object-cover sm:h-[60vh] h-auto object-contain animate-appear"
       />
-      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#ff8d78] antialiased">
+      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#ec6c5c] antialiased animate-heading">
         AI That Speaks Every Language.
       </h1>
-      <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%]">
+      <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%] animate-text opacity-0">
         Language should never be a barrier. With{" "}
         <span className="text-[#5c6ed1] font-black tracking-widest font-yatra text-xl md:text-2xl">
           LinguaSwift
@@ -22,3 +30,8 @@ export default function FrameThree() {
     </section>
   );
 }
+
+FrameThree.propTypes = {
+  currentFrame: PropTypes.number.isRequired,
+  isCurrentFrameChanging: PropTypes.bool.isRequired,
+};
