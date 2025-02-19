@@ -6,12 +6,12 @@ export default function FrameThree() {
         alt="person with a robot"
         className="sm:object-cover sm:h-[60vh] h-auto object-contain"
       />
-      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#5c6ed1] antialiased">
+      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#ff8d78] antialiased">
         AI That Speaks Every Language.
       </h1>
       <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%]">
         Language should never be a barrier. With{" "}
-        <span className="text-[#ff8d78] font-black tracking-widest font-yatra text-xl md:text-2xl">
+        <span className="text-[#5c6ed1] font-black tracking-widest font-yatra text-xl md:text-2xl">
           LinguaSwift
         </span>
         , you can instantly translate, summarize, and detect languages with
