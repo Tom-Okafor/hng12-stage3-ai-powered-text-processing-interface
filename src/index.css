@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+    --color-pink-light: #ffcdda;
+    --color-blue-light: #bdebef;
+    --color-yellow-light: #f5eab0;
+    --color--red-light: #ffc8db;
+    --color-purple-light: #ddc2ee;
+    --color-green-light: #b5e1aa;
+    --color-brown-thick: #fbb254;
+    --color-red-thick: #f83c47;
+    --color-bluish: #79a7fe;
+    --font-autour: 'Autour One', serif;
+    --font-ultra: 'Ultra', serif;
+    --font-itim: 'Itim', sans-serif;
+    --font-yatra: 'Yatra One', sans-serif;
+    --font-lug: 'Lugrasimo', cursive;
+}
