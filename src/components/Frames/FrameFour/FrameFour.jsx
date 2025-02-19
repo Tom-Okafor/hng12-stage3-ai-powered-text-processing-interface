@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 const spanStyles =
   "text-[#e93d4f] font-black tracking-widest font-yatra text-xl md:text-2xl";
-export default function FrameFour({currentFrame, isCurrentFrameChanging}) {
+export default function FrameFour({ currentFrame, isCurrentFrameChanging }) {
   return (
     <section
       className={`min-h-dvh flex ${
@@ -26,7 +26,7 @@ export default function FrameFour({currentFrame, isCurrentFrameChanging}) {
         Language is everything and Language is fun with{" "}
         <span className={spanStyles}>LinguaSwift</span>
       </p>
-      <button className="text-xl bg-red-500 hover:bg-red-900 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_8px_#e93d4f]">
+      <button className="text-xl bg-red-500 hover:bg-red-700 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#e93d4f]">
         Try LinguaSwift Now!
       </button>
     </section>

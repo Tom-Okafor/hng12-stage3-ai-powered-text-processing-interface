@@ -14,7 +14,7 @@ export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
         alt="person with a robot"
         className="sm:object-cover sm:h-[60vh] h-auto object-contain animate-appear"
       />
-      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#ec6c5c] antialiased animate-heading">
+      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[25ch] text-[#ec6c5c] antialiased animate-heading">
         AI That Speaks Every Language.
       </h1>
       <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%] animate-text opacity-0">
@@ -27,6 +27,9 @@ export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
         communicating across cultures, or simplifying complex text, our
         intelligent tool ensures seamless understanding—anytime, anywhere. 🌍✨
       </p>
+      <button className="text-xl bg-bluish hover:bg-bluish-dark duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#486498]">
+        Try LinguaSwift Now!
+      </button>
     </section>
   );
 }

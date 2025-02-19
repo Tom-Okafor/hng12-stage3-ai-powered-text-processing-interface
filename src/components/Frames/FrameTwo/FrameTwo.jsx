@@ -17,7 +17,7 @@ export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
         Breaking Language Barriers, One Word at a Time.
       </h1>
       <p className="text-lg md:text-xl text-center max-w-[40ch] font-poiret font-black tracking-wider leading-[150%] animate-text opacity-0">
-        <span className="text-[#3aa3cb] font-black tracking-widest font-yatra text-xl md:text-2xl">
+        <span className="text-teal font-black tracking-widest font-yatra text-xl md:text-2xl">
           LinguaSwift
         </span>{" "}
         helps you seamlessly translate, summarize, and detect languages. Whether
@@ -26,6 +26,9 @@ export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
         accuracy—effortlessly. Say goodbye to confusion and hello to seamless
         communication! 🚀
       </p>
+      <button className="text-xl bg-red-500 hover:bg-red-700 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#e93d4f]">
+        Try LinguaSwift Now!
+      </button>
     </section>
   );
 }

@@ -2,6 +2,7 @@ import FrameOne from "./FrameOne/FrameOne";
 import FrameTwo from "./FrameTwo/FrameTwo";
 import FrameThree from "./FrameThree/FrameThree";
 import FrameFour from "./FrameFour/FrameFour";
+import FrameNavigationIcon from "./Shared/FrameNavigationIcon";
 import { useState } from "react";
 
 export default function Frames() {
@@ -57,18 +58,18 @@ export default function Frames() {
   }
 
   return (
-    <div className="border-2 min-h-dvh">
+    <div className="">
       <button
-        className="border-2 border-brown-thick"
+        className="fixed top-[50%] [transform:translateY(-50%)] left-[6%] scale-x-[-1]"
         onClick={handlePrevButtonClick}
       >
-        previous
+        <FrameNavigationIcon />
       </button>
       <button
-        className="border-2 border-brown-thick"
+        className="fixed top-[50%] [transform:translateY(-50%)] right-[6%]"
         onClick={handleNextButtonClick}
       >
-        next
+        <FrameNavigationIcon />
       </button>
       {frames[currentFrame - 1]}
     </div>
