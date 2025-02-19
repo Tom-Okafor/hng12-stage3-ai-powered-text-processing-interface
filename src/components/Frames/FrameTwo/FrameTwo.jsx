@@ -6,11 +6,11 @@ export default function FrameTwo() {
         alt="person with a robot"
         className="object-cover h-[55vh]"
       />
-      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-bluish-dark antialiased">
+      <h1 className="text-2xl sm:text-3xl lg:text-[40px] tracking-widest leading-[150%] text-center font-bold font-ultra max-w-[30ch] text-[#e93d4f] antialiased">
         Breaking Language Barriers, One Word at a Time.
       </h1>
       <p className="text-lg md:text-xl text-center max-w-[50ch] font-poiret font-black tracking-wider leading-[150%]">
-        <span className="text-pink-thick font-black tracking-widest font-yatra text-xl md:text-2xl">
+        <span className="text-[#3aa3cb] font-black tracking-widest font-yatra text-xl md:text-2xl">
           LinguaSwift
         </span> helps you seamlessly translate, summarize, and detect languages. Whether
         you&apos;re reading foreign content, communicating across cultures, or
