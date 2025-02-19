@@ -7,6 +7,28 @@ import { useState } from "react";
 export default function Frames() {
   const [currentFrame, setCurrentFrame] = useState(1);
   const [isCurrentFrameChanging, setCurrentFrameIsChanging] = useState(false);
+  const frames = [
+    <FrameOne
+      key={1}
+      currentFrame={currentFrame}
+      isCurrentFrameChanging={isCurrentFrameChanging}
+    />,
+    <FrameTwo
+      key={2}
+      currentFrame={currentFrame}
+      isCurrentFrameChanging={isCurrentFrameChanging}
+    />,
+    <FrameThree
+      key={3}
+      currentFrame={currentFrame}
+      isCurrentFrameChanging={isCurrentFrameChanging}
+    />,
+    <FrameFour
+      key={4}
+      currentFrame={currentFrame}
+      isCurrentFrameChanging={isCurrentFrameChanging}
+    />,
+  ];
 
   function handleNextButtonClick() {
     setCurrentFrameIsChanging(true);
@@ -48,22 +70,7 @@ export default function Frames() {
       >
         next
       </button>
-      <FrameOne
-        currentFrame={currentFrame}
-        isCurrentFrameChanging={isCurrentFrameChanging}
-      />
-      <FrameTwo
-        currentFrame={currentFrame}
-        isCurrentFrameChanging={isCurrentFrameChanging}
-      />
-      <FrameThree
-        currentFrame={currentFrame}
-        isCurrentFrameChanging={isCurrentFrameChanging}
-      />
-      <FrameFour
-        currentFrame={currentFrame}
-        isCurrentFrameChanging={isCurrentFrameChanging}
-      />
+      {frames[currentFrame - 1]}
     </div>
   );
 }

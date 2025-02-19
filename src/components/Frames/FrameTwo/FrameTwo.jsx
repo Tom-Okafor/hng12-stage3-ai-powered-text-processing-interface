@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
   return (
     <section
-      className={`min-h-dvh ${currentFrame === 2 ? "flex" : "hidden"} ${
+      className={`min-h-dvh flex ${
         currentFrame === 2 &&
         isCurrentFrameChanging === true &&
         "animate-disappear"

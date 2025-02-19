@@ -5,7 +5,7 @@ const spanStyles =
 export default function FrameFour({currentFrame, isCurrentFrameChanging}) {
   return (
     <section
-      className={`min-h-dvh ${currentFrame === 4 ? "flex" : "hidden"} ${
+      className={`min-h-dvh flex ${
         currentFrame === 4 &&
         isCurrentFrameChanging === true &&
         "animate-disappear"

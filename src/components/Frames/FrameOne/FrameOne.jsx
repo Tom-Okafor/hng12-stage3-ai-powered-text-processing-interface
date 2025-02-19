@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export default function FrameOne({ currentFrame, isCurrentFrameChanging }) {
   return (
     <section
-      className={`min-h-dvh ${currentFrame === 1 ? "flex" : "hidden"} ${
+      className={`min-h-dvh flex ${
         currentFrame === 1 &&
         isCurrentFrameChanging === true &&
         "animate-disappear"
