@@ -73,16 +73,32 @@
         }
     }
 }
+
 .btnBlue {
     background-color: var(--color-bluish);
 }
+
 .btnRed {
     background-color: #ef4444;
 }
+
 .btnRed:hover {
     background-color: #b91c1c;
 }
 
 .btnBlue:hover {
     background-color: var(--color-bluish-dark);
+}
+
+.scroll-style {
+    scrollbar-width: thin;
+    scrollbar-color: ;
+}
+
+.scroll-style::-webkit-scrollbar-track {
+    background: var(--color-bluish)
+}
+
+.scroll-style::-webkit-scrollbar-thumb {
+    background: var(--color-bluish-dark);
 }

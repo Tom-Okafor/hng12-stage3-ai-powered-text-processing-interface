@@ -43,7 +43,7 @@ export const chatBackgrounds = [
 ];
 
 export const contentContainerStyles =
-  "w-[80vw] md:w-[400px] flex flex-col justify-start items-center gap-8 py-6 px-4 mt-2 border-2 border-gray-light border-t-0 bg-[#fff]";
+  "w-[80vw] md:w-[400px] h-[calc(100dvh-70px)] flex flex-col justify-start items-center gap-8 py-6 px-4 mt-2 border-2 border-gray-light border-t-0 bg-[#fff] overflow-auto";
 
 export const contentHeadingStyles =
   "text-lg font-bold font-autour text-center capitalize tracking-wider leading-[150%] text-gray-dark";

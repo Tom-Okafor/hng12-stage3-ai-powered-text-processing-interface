@@ -1,11 +1,17 @@
 import { avatars, contentHeadingStyles } from "../../../../constants";
 import { contentContainerStyles } from "../../../../constants";
 
-const style = "w-[80px] h-[80px] rounded-full shadow-xl border-2 border-teal";
+const style =
+  "w-[80px] h-[80px] rounded-full shadow-xl border-[3px] border-brown-thick hover:border-[3px] hover:border-red-thick  hover:shadow-2xl focus:border-[3px] focus:border-red-thick  focus:shadow-2xl focus:outline-0";
 
 export default function ProfileContent() {
   return (
-    <div className={contentContainerStyles}>
+    <div
+      className={`${contentContainerStyles} scroll-style`}
+      style={{
+        scrollbarColor: "var(--color-pink-thick) var(--color-pink-light)",
+      }}
+    >
       <h2 className={contentHeadingStyles}>
         Select the Avatar that best captures your style or expression. 😉
       </h2>

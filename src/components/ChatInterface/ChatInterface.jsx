@@ -1,5 +1,6 @@
 import ChatInterfaceHeader from "./ChatInterfaceHeader";
 import ChatInterfaceAside from "./ChatInterfaceAside/ChatInterfaceAside";
+import ChatInterfaceMain from "./ChatInterfaceMain/ChatInterfaceMain";
 import { useState } from "react";
 import { NavigationContentContext } from "../../contexts/UseNavigationContentContext";
 
@@ -13,7 +14,7 @@ const content = [
   <BackgroundContent key={3} />,
 ];
 export default function ChatInterface() {
-  const [navigationContentIndex, setNavigationContentIndex] = useState(2);
+  const [navigationContentIndex, setNavigationContentIndex] = useState(0);
   return (
     <section className="flex flex-col h-dvh">
       <ChatInterfaceHeader />
@@ -22,7 +23,8 @@ export default function ChatInterface() {
         <NavigationContentContext.Provider value={setNavigationContentIndex}>
           <ChatInterfaceAside />
         </NavigationContentContext.Provider>
-        {navigationContentIndex && content[navigationContentIndex - 1]}
+        {!!navigationContentIndex && content[navigationContentIndex - 1]}
+        <ChatInterfaceMain />
       </div>
     </section>
   );
