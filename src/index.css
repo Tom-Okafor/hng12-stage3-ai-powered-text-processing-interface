@@ -27,6 +27,7 @@
     --animate-text: animate-heading 800ms 500ms ease-out forwards;
     --animate-appear: appear 1.5s ease forwards;
     --animate-disappear: disappear 1s ease forwards;
+    --animate-slide: slide 1s cubic-bezier(0.65, -0.25, 0.45, 1.5) forwards;
 
     @keyframes animate-heading {
         from {
@@ -71,6 +72,27 @@
             filter: blur(5px);
             -webkit-filter: blur(5px);
         }
+    }
+
+    @keyframes slide {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+            -webkit-transform: translateX(100px);
+            -moz-transform: translateX(100px);
+            -ms-transform: translateX(100px);
+            -o-transform: translateX(100px);
+}
+
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+}
     }
 }
 

@@ -9,8 +9,8 @@ import ProfileContent from "./ChatInterfaceAside/AsideNavigationContent/ProfileC
 import BackgroundContent from "./ChatInterfaceAside/AsideNavigationContent/BackgroundContent";
 
 const content = [
-  <ThemeContent key={1} />,
-  <ProfileContent key={2} />,
+  <ProfileContent key={1} />,
+  <ThemeContent key={2} />,
   <BackgroundContent key={3} />,
 ];
 export default function ChatInterface() {
@@ -20,7 +20,7 @@ export default function ChatInterface() {
       <ChatInterfaceHeader />
 
       <div className="flex-1 flex">
-        <NavigationContentContext.Provider value={setNavigationContentIndex}>
+        <NavigationContentContext.Provider value={{setNavigationContentIndex, navigationContentIndex}}>
           <ChatInterfaceAside />
         </NavigationContentContext.Provider>
         {!!navigationContentIndex && content[navigationContentIndex - 1]}
