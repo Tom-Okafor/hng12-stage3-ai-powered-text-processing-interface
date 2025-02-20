@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import CTA from "../Shared/CTA";
 
 export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
   return (
@@ -27,9 +28,11 @@ export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
         communicating across cultures, or simplifying complex text, our
         intelligent tool ensures seamless understanding—anytime, anywhere. 🌍✨
       </p>
-      <button className="text-lg md:text-xl bg-bluish hover:bg-bluish-dark duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#486498]">
-        Try LinguaSwift Now!
-      </button>
+      <CTA
+        background="bg-bluish"
+        hoverBackground="bg-bluish-dark"
+        shadow="#486498"
+      />
     </section>
   );
 }

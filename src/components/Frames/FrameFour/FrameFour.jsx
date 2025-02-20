@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import CTA from "../Shared/CTA";
 
 const spanStyles =
   "text-[#e93d4f] font-black tracking-widest font-yatra text-xl md:text-2xl";
@@ -26,9 +27,11 @@ export default function FrameFour({ currentFrame, isCurrentFrameChanging }) {
         Language is everything and Language is fun with{" "}
         <span className={spanStyles}>LinguaSwift</span>
       </p>
-      <button className="text-lg md:text-xl bg-red-500 hover:bg-red-700 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#e93d4f]">
-        Try LinguaSwift Now!
-      </button>
+      <CTA
+        background="bg-red-500"
+        hoverBackground="bg-red-700"
+        shadow="#e93d4f"
+      />{" "}
     </section>
   );
 }

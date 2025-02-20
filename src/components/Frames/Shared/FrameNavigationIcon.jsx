@@ -6,7 +6,7 @@ export default function FrameNavigationIcon() {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
-      className="group w-[50px] sm:h-[50px] md:w-[80px] md:h-[80px]"
+      className="group w-[50px] h-[50px] md:w-[80px] md:h-[80px]"
     >
       <path
         className="fill-bluish group-hover:fill-bluish-dark duration-300"

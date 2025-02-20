@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import CTA from "../Shared/CTA";
 
 export default function FrameOne({ currentFrame, isCurrentFrameChanging }) {
   return (
@@ -27,9 +28,11 @@ export default function FrameOne({ currentFrame, isCurrentFrameChanging }) {
         Fast. Accurate. Seamless. Say goodbye to language barriers and
         information overload!
       </p>
-      <button className="text-lg md:text-xl bg-bluish hover:bg-bluish-dark duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#486498]">
-        Try LinguaSwift Now!
-      </button>
+      <CTA
+        background="bg-bluish"
+        hoverBackground="bg-bluish-dark"
+        shadow="#486498"
+      />
     </section>
   );
 }

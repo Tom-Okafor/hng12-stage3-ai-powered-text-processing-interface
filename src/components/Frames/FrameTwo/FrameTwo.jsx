@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import CTA from "../Shared/CTA";
+
 export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
   return (
     <section
@@ -26,9 +28,8 @@ export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
         accuracy—effortlessly. Say goodbye to confusion and hello to seamless
         communication! 🚀
       </p>
-      <button className="text-lg md:text-xl bg-red-500 hover:bg-red-700 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#e93d4f]">
-        Try LinguaSwift Now!
-      </button>
+      
+       <CTA background='bg-red-500' hoverBackground='bg-red-700' shadow='#e93d4f'/>    
     </section>
   );
 }
