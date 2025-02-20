@@ -4,7 +4,7 @@
     --color-pink-light: #ffcdda;
     --color-blue-light: #bdebef;
     --color-yellow-light: #f5eab0;
-    --color--red-light: #ffc8db;
+    --color-red-light: #ffc8db;
     --color-purple-light: #ddc2ee;
     --color-green-light: #b5e1aa;
     --color-brown-thick: #fbb254;
@@ -62,14 +62,17 @@
             opacity: 1;
             filter: none;
             -webkit-filter: none;
-}
+        }
 
 
         to {
             opacity: 0;
             filter: blur(5px);
             -webkit-filter: blur(5px);
-}
+        }
     }
 }
 
+.aside::before {
+
+}

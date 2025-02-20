@@ -4,6 +4,7 @@ import FrameThree from "./FrameThree/FrameThree";
 import FrameFour from "./FrameFour/FrameFour";
 import FrameNavigationIcon from "./Shared/FrameNavigationIcon";
 import { useState } from "react";
+import Logo from "../Logo";
 
 export default function Frames() {
   const [currentFrame, setCurrentFrame] = useState(1);
@@ -59,10 +60,7 @@ export default function Frames() {
 
   return (
     <div>
-      <div className="flex gap-2 px-4 py-2 items-center">
-        <img src="linguaSwift-logo.png" alt="logo" aria-hidden="true" className="h-[50px] object-contain animate-spin hover:animate-none duration-300" />
-        <p className="font-itim font-black text-xl tracking-[3px]">LinguaSwift</p>
-      </div>
+      <Logo height={50} fontSize='2xl' />
       <button
         className="fixed top-[50%] [transform:translateY(-50%)] left-[1%] md:left-[6%] scale-x-[-1]"
         onClick={handlePrevButtonClick}
