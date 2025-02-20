@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { ChatInterfaceContext } from "../../../../contexts/UseChatInterfaceContext";
 
 const style =
-  "w-[80px] h-[80px] rounded-full shadow-xl border-[3px] border-brown-thick hover:border-[3px] hover:border-red-thick  hover:shadow-2xl focus:border-[3px] focus:border-red-thick  focus:shadow-2xl focus:outline-0";
+  "w-[80px] h-[80px] rounded-full shadow-xl border-[3px] border-brown-thick hover:border-[3px] hover:border-red-thick  hover:shadow-2xl focus:border-[3px] focus:border-red-thick focus:shadow-2xl focus:outline-0";
 
 export default function ProfileContent() {
   const { setUserAvatar } = useContext(ChatInterfaceContext);

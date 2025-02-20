@@ -6,7 +6,6 @@ export const labels = [
   "background button",
 ];
 
-
 export const themeColours = [
   "#ffc8db",
   "#bdebef",
@@ -20,7 +19,7 @@ export const themeColours = [
   "#8d6e63",
   "#ff9800",
   "#ccff90",
-]; 
+];
 
 export const avatars = [
   "avatar2.svg",
@@ -31,6 +30,10 @@ export const avatars = [
   "avatar6.svg",
   "avatar7.svg",
   "avatar8.svg",
+  "avatar9.svg",
+  "avatar10.svg",
+  "avatar11.svg",
+  "avatar12.svg",
 ];
 
 export const chatBackgrounds = [
