@@ -1,14 +1,12 @@
 export default function FrameNavigationIcon() {
   return (
     <svg
-      height="80px"
-      width="80px"
       version="1.1"
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
-      className="group"
+      className="group w-[50px] sm:h-[50px] md:w-[80px] md:h-[80px]"
     >
       <path
         className="fill-bluish group-hover:fill-bluish-dark duration-300"

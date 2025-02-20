@@ -7,7 +7,7 @@ export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
         currentFrame === 3 &&
         isCurrentFrameChanging === true &&
         "animate-disappear"
-      } flex-col gap-8 px-8 py-8 items-center justify-center`}
+      } flex-col gap-8 px-8 pb-8 items-center justify-center`}
     >
       <img
         src="e-frame.png"
@@ -27,7 +27,7 @@ export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
         communicating across cultures, or simplifying complex text, our
         intelligent tool ensures seamless understanding—anytime, anywhere. 🌍✨
       </p>
-      <button className="text-xl bg-bluish hover:bg-bluish-dark duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#486498]">
+      <button className="text-lg md:text-xl bg-bluish hover:bg-bluish-dark duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#486498]">
         Try LinguaSwift Now!
       </button>
     </section>

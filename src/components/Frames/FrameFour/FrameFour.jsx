@@ -9,7 +9,7 @@ export default function FrameFour({ currentFrame, isCurrentFrameChanging }) {
         currentFrame === 4 &&
         isCurrentFrameChanging === true &&
         "animate-disappear"
-      } flex-col gap-8 px-8 py-8 items-center justify-center`}
+      } flex-col gap-8 px-8 pb-8 items-center justify-center`}
     >
       <img
         src="b-frame.png"
@@ -26,7 +26,7 @@ export default function FrameFour({ currentFrame, isCurrentFrameChanging }) {
         Language is everything and Language is fun with{" "}
         <span className={spanStyles}>LinguaSwift</span>
       </p>
-      <button className="text-xl bg-red-500 hover:bg-red-700 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#e93d4f]">
+      <button className="text-lg md:text-xl bg-red-500 hover:bg-red-700 duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_#e93d4f]">
         Try LinguaSwift Now!
       </button>
     </section>

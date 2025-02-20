@@ -58,15 +58,19 @@ export default function Frames() {
   }
 
   return (
-    <div className="">
+    <div>
+      <div className="flex gap-2 px-4 py-2 items-center">
+        <img src="linguaSwift-logo.png" alt="logo" aria-hidden="true" className="h-[50px] object-contain animate-spin hover:animate-none duration-300" />
+        <p className="font-itim font-black text-xl tracking-[3px]">LinguaSwift</p>
+      </div>
       <button
-        className="fixed top-[50%] [transform:translateY(-50%)] left-[6%] scale-x-[-1]"
+        className="fixed top-[50%] [transform:translateY(-50%)] left-[1%] md:left-[6%] scale-x-[-1]"
         onClick={handlePrevButtonClick}
       >
         <FrameNavigationIcon />
       </button>
       <button
-        className="fixed top-[50%] [transform:translateY(-50%)] right-[6%]"
+        className="fixed top-[50%] [transform:translateY(-50%)] right-[1%] md:right-[6%]"
         onClick={handleNextButtonClick}
       >
         <FrameNavigationIcon />
