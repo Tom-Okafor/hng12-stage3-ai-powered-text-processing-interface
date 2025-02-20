@@ -17,6 +17,9 @@ export const themeColours = [
   "bg-amber-200",
   "bg-emerald-300",
   "bg-fuchsia-400",
+  "bg-slate-400",
+  "bg-red-faint",
+
 ];
 
 export const avatars = [
@@ -39,5 +42,3 @@ export const chatBackgrounds = [
   "chat-background5.jpg",
   "chat-background6.jpeg",
 ];
-
-

@@ -5,7 +5,8 @@
     --color-blue-light: #bdebef;
     --color-yellow-light: #f5eab0;
     --color-red-light: #ffc8db;
-    --color-purple-light: #ddc2ee;
+    --color-red-faint: #ff4c4c;
+    --color-purple-light: #c6aed6;
     --color-green-light: #b5e1aa;
     --color-brown-thick: #fbb254;
     --color-red-thick: #f83c47;
@@ -14,7 +15,7 @@
     --color-teal: #258e8e;
     --color-gray-dark: #555;
     --color-gray-medium: #888;
-    --color-gray-light: #ccc;
+    --color-gray-light: #ddd;
     --color-pink-thick: #fe79ea;
     --font-autour: 'Autour One', serif;
     --font-ultra: 'Ultra', serif;
