@@ -1,8 +1,11 @@
-import Frames from "./components/Frames/Frames";
+import AppRoutes from "./routes/AppRoutes";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <main>
-      <Frames />
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </main>
   );
 }
