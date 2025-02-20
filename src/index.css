@@ -102,3 +102,9 @@
 .scroll-style::-webkit-scrollbar-thumb {
     background: var(--color-bluish-dark);
 }
+
+.background {
+    inset: 0;
+    position: absolute;
+    background-size: contain !important;
+}

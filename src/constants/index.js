@@ -6,20 +6,6 @@ export const labels = [
   "background button",
 ];
 
-// export const themeColours = [
-//   "red-light",
-//   "blue-light",
-//   "green-light",
-//   "purple-light",
-//   "yellow-light",
-//   "gray-light",
-//   "bluish",
-//   "amber-200",
-//   "emerald-300",
-//   "fuchsia-200",
-//   "slate-400",
-//   "pink-thick",
-// ];
 
 export const themeColours = [
   "#ffc8db",

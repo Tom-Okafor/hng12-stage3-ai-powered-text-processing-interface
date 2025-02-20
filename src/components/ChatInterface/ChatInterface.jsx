@@ -15,24 +15,29 @@ const content = [
 ];
 export default function ChatInterface() {
   const [navigationContentIndex, setNavigationContentIndex] = useState(0);
-  const [interfaceThemeColor, setInterfaceThemeColor] =
-    useState("red-light");
+  const [interfaceThemeColor, setInterfaceThemeColor] = useState("#ffc8db");
+  const [interfaceBackground, setInterfaceBackground] = useState(0);
   return (
     <section className="flex flex-col h-dvh">
       <ChatInterfaceContext.Provider
-        value={{ interfaceThemeColor, setInterfaceThemeColor }}
+        value={{
+          interfaceThemeColor,
+          setInterfaceThemeColor,
+          interfaceBackground,
+          setInterfaceBackground,
+        }}
       >
-        <ChatInterfaceHeader />
+        <NavigationContentContext.Provider
+          value={{ setNavigationContentIndex, navigationContentIndex }}
+        >
+          <ChatInterfaceHeader />
 
-        <div className="flex-1 flex">
-          <NavigationContentContext.Provider
-            value={{ setNavigationContentIndex, navigationContentIndex }}
-          >
+          <div className="flex-1 flex">
             <ChatInterfaceAside />
-          </NavigationContentContext.Provider>
-          {!!navigationContentIndex && content[navigationContentIndex - 1]}
-          <ChatInterfaceMain />
-        </div>
+            {!!navigationContentIndex && content[navigationContentIndex - 1]}
+            <ChatInterfaceMain />
+          </div>
+        </NavigationContentContext.Provider>
       </ChatInterfaceContext.Provider>
     </section>
   );

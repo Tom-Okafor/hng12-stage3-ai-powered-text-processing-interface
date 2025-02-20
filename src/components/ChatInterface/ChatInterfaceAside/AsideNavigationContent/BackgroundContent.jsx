@@ -1,10 +1,19 @@
 import { chatBackgrounds } from "../../../../constants";
 import { contentContainerStyles } from "../../../../constants";
 import { contentHeadingStyles } from "../../../../constants";
+import { useContext } from "react";
+import { ChatInterfaceContext } from "../../../../contexts/UseChatInterfaceContext";
 
 const style =
   "w-[150px] h-[250px] rounded-lg shadow-xl hover:border-[3px] hover:border-red-thick hover:shadow-2xl focus:border-[3px] focus:border-red-thick  focus:shadow-2xl focus:outline-0";
+
 export default function BackgroundContent() {
+  const { setInterfaceBackground } = useContext(ChatInterfaceContext);
+
+  function handleClick(index) {
+    setInterfaceBackground(index);
+  }
+
   return (
     <div
       className={`${contentContainerStyles} scroll-style`}
@@ -18,7 +27,13 @@ export default function BackgroundContent() {
       <div className="flex gap-4 justify-center flex-wrap">
         {chatBackgrounds.map((background, index) => {
           return (
-            <button key={index} className={`${style}`}>
+            <button
+              key={index}
+              className={`${style}`}
+              onClick={() => {
+                handleClick(index);
+              }}
+            >
               <img
                 src={background}
                 alt="background"
