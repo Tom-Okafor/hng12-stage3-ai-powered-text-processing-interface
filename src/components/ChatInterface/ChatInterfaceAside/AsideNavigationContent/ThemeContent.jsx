@@ -1,13 +1,16 @@
 import { themeColours } from "../../../../constants";
 import { contentContainerStyles } from "../../../../constants";
 import { contentHeadingStyles } from "../../../../constants";
+import { useContext } from "react";
+import { ChatInterfaceContext } from "../../../../contexts/UseChatInterfaceContext";
 
 const style =
   "w-[85px] h-[85px] rounded-lg shadow-xl hover:border-[3px] hover:border-red-thick hover:shadow-2xl focus:border-[3px] focus:border-red-thick  focus:shadow-2xl focus:outline-0`";
 
 export default function ThemeContent() {
+  const { setInterfaceThemeColor } = useContext(ChatInterfaceContext);
   function handleThemeButtonClick(color) {
-    console.log(color);
+    setInterfaceThemeColor(color);
   }
   return (
     <div
@@ -24,7 +27,7 @@ export default function ThemeContent() {
           return (
             <button
               key={index}
-              className={`${style} ${color}`}
+              className={`${style} bg-${color}`}
               onClick={() => {
                 handleThemeButtonClick(color);
               }}

@@ -7,18 +7,18 @@ export const labels = [
 ];
 
 export const themeColours = [
-  "bg-red-light",
-  "bg-blue-light",
-  "bg-green-light",
-  "bg-purple-light",
-  "bg-yellow-light",
-  "bg-gray-light",
-  "bg-bluish",
-  "bg-amber-200",
-  "bg-emerald-300",
-  "bg-fuchsia-400",
-  "bg-slate-400",
-  "bg-red-faint",
+  "red-light",
+  "blue-light",
+  "green-light",
+  "purple-light",
+  "yellow-light",
+  "gray-light",
+  "bluish",
+  "amber-200",
+  "emerald-300",
+  "fuchsia-200",
+  "slate-400",
+  "red-faint",
 ];
 
 export const avatars = [
@@ -43,9 +43,7 @@ export const chatBackgrounds = [
 ];
 
 export const contentContainerStyles =
-  "w-[80vw] md:w-[400px] h-[calc(100dvh-70px)] flex flex-col justify-start items-center gap-8 py-6 px-4 mt-2 border-2 border-gray-light border-t-0 bg-[#fff] overflow-auto animate-appear";
+  "w-[80vw] md:w-[400px] h-[calc(100dvh-70px)] flex flex-col justify-start items-center gap-8 py-6 px-4 mt-2 border-r-2 border-gray-light border-t-0  overflow-auto animate-appear";
 
 export const contentHeadingStyles =
   "text-lg font-bold font-autour text-center capitalize tracking-wider leading-[150%] text-gray-dark";
-
-  
