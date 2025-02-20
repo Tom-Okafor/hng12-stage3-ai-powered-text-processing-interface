@@ -28,8 +28,8 @@ export default function FrameTwo({ currentFrame, isCurrentFrameChanging }) {
         accuracy—effortlessly. Say goodbye to confusion and hello to seamless
         communication! 🚀
       </p>
-      
-       <CTA background='bg-red-500' hoverBackground='bg-red-700' shadow='#e93d4f'/>    
+
+      <CTA extraClass="btnRed" shadow="#e93d4f" />
     </section>
   );
 }

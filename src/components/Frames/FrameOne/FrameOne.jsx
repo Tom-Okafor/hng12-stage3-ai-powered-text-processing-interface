@@ -28,11 +28,7 @@ export default function FrameOne({ currentFrame, isCurrentFrameChanging }) {
         Fast. Accurate. Seamless. Say goodbye to language barriers and
         information overload!
       </p>
-      <CTA
-        background="bg-bluish"
-        hoverBackground="bg-bluish-dark"
-        shadow="#486498"
-      />
+      <CTA extraClass="btnBlue" shadow="#486498" />
     </section>
   );
 }

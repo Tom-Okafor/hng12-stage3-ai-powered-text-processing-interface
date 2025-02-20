@@ -28,11 +28,7 @@ export default function FrameThree({ currentFrame, isCurrentFrameChanging }) {
         communicating across cultures, or simplifying complex text, our
         intelligent tool ensures seamless understanding—anytime, anywhere. 🌍✨
       </p>
-      <CTA
-        background="bg-bluish"
-        hoverBackground="bg-bluish-dark"
-        shadow="#486498"
-      />
+      <CTA extraClass="btnBlue" shadow="#486498" />
     </section>
   );
 }

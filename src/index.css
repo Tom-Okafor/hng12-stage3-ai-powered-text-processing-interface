@@ -72,7 +72,16 @@
         }
     }
 }
+.btnBlue {
+    background-color: var(--color-bluish);
+}
+.btnRed {
+    background-color: #ef4444;
+}
+.btnRed:hover {
+    background-color: #b91c1c;
+}
 
-.aside::before {
-
+.btnBlue:hover {
+    background-color: var(--color-bluish-dark);
 }

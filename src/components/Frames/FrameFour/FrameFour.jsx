@@ -27,11 +27,7 @@ export default function FrameFour({ currentFrame, isCurrentFrameChanging }) {
         Language is everything and Language is fun with{" "}
         <span className={spanStyles}>LinguaSwift</span>
       </p>
-      <CTA
-        background="bg-red-500"
-        hoverBackground="bg-red-700"
-        shadow="#e93d4f"
-      />{" "}
+      <CTA extraClass="btnRed" shadow="#e93d4f" />{" "}
     </section>
   );
 }

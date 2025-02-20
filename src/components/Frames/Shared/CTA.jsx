@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-export default function CTA({ background, hoverBackground, shadow }) {
+export default function CTA({ extraClass, shadow }) {
   const navigate = useNavigate();
   return (
     <button
-      className={`text-lg md:text-xl ${background} hover:${hoverBackground} duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] shadow-[0px_3px_10px_${shadow}]`}
+      className={`text-lg md:text-xl duration-300 text-white px-4 py-3 rounded-full leading-[100%] font-yatra tracking-[2px] ${extraClass}`}
+      style={{
+        boxShadow: `0px 3px 10px ${shadow}`,
+      }}
       onClick={() => {
         navigate("/chat");
       }}
@@ -16,7 +19,6 @@ export default function CTA({ background, hoverBackground, shadow }) {
 }
 
 CTA.propTypes = {
-  background: PropTypes.string.isRequired,
-  hoverBackground: PropTypes.string.isRequired,
+  extraClass: PropTypes.string.isRequired,
   shadow: PropTypes.string.isRequired,
 };
