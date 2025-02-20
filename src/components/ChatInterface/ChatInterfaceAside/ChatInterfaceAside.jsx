@@ -15,10 +15,10 @@ export default function ChatInterfaceAside() {
   return (
     <nav
       style={{
-        boxShadow:
-          "8px 0px 8px -8px #777",
+        boxShadow: `0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0 10px ${interfaceThemeColor}, 0px 0 10px ${interfaceThemeColor}, 0px 0 10px ${interfaceThemeColor}`,
+        backgroundColor: `${interfaceThemeColor}`,
       }}
-      className={`h-full bg-${interfaceThemeColor} px-2 py-6 w-[80px] relative aside  flex flex-col gap-6 duration-300`}
+      className={`h-full px-2 py-6 w-[80px] relative aside  flex flex-col gap-6 duration-300`}
     >
       {icons.map((icon, index) => (
         <AsideNavigationIcon

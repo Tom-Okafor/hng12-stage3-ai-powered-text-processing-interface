@@ -27,7 +27,10 @@ export default function ThemeContent() {
           return (
             <button
               key={index}
-              className={`${style} bg-${color}`}
+              className={`${style}`}
+              style={{
+                backgroundColor: color,
+              }}
               onClick={() => {
                 handleThemeButtonClick(color);
               }}

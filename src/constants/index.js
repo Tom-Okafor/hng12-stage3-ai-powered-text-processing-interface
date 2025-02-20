@@ -6,20 +6,35 @@ export const labels = [
   "background button",
 ];
 
+// export const themeColours = [
+//   "red-light",
+//   "blue-light",
+//   "green-light",
+//   "purple-light",
+//   "yellow-light",
+//   "gray-light",
+//   "bluish",
+//   "amber-200",
+//   "emerald-300",
+//   "fuchsia-200",
+//   "slate-400",
+//   "pink-thick",
+// ];
+
 export const themeColours = [
-  "red-light",
-  "blue-light",
-  "green-light",
-  "purple-light",
-  "yellow-light",
-  "gray-light",
-  "bluish",
-  "amber-200",
-  "emerald-300",
-  "fuchsia-200",
-  "slate-400",
-  "red-faint",
-];
+  "#ffc8db",
+  "#bdebef",
+  "#b5e1aa",
+  "#e1bee7",
+  "#f5eab0",
+  "#ddd",
+  "#79a7fe",
+  "#258e8e",
+  "#fbb254",
+  "#8d6e63",
+  "#ff9800",
+  "#ccff90",
+]; 
 
 export const avatars = [
   "avatar2.svg",
