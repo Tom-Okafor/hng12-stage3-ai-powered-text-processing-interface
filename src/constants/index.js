@@ -19,7 +19,6 @@ export const themeColours = [
   "bg-fuchsia-400",
   "bg-slate-400",
   "bg-red-faint",
-
 ];
 
 export const avatars = [
@@ -42,3 +41,9 @@ export const chatBackgrounds = [
   "chat-background5.jpg",
   "chat-background6.jpeg",
 ];
+
+export const contentContainerStyles =
+  "w-[80vw] md:w-[400px] flex flex-col justify-start items-center gap-8 py-6 px-4 mt-2 border-2 border-gray-light border-t-0 bg-[#fff]";
+
+export const contentHeadingStyles =
+  "text-lg font-bold font-autour text-center capitalize tracking-wider leading-[150%] text-gray-dark";

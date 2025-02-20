@@ -13,7 +13,7 @@ const content = [
   <BackgroundContent key={3} />,
 ];
 export default function ChatInterface() {
-  const [navigationContentIndex, setNavigationContentIndex] = useState(1);
+  const [navigationContentIndex, setNavigationContentIndex] = useState(2);
   return (
     <section className="flex flex-col h-dvh">
       <ChatInterfaceHeader />

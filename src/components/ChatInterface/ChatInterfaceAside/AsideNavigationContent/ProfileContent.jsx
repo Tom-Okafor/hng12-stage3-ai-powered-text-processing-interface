@@ -1,12 +1,15 @@
-import { avatars } from "../../../../constants";
+import { avatars, contentHeadingStyles } from "../../../../constants";
+import { contentContainerStyles } from "../../../../constants";
 
-const style = "w-[50px] h-[50px] rounded-full shadow-2xl border-2";
+const style = "w-[80px] h-[80px] rounded-full shadow-xl border-2 border-teal";
 
 export default function ProfileContent() {
   return (
-    <div>
-      <h2>Select the Avatar that best captures your style or expression. 😉</h2>
-      <div>
+    <div className={contentContainerStyles}>
+      <h2 className={contentHeadingStyles}>
+        Select the Avatar that best captures your style or expression. 😉
+      </h2>
+      <div className="flex gap-4 justify-center flex-wrap">
         {avatars.map((avatar, index) => {
           return (
             <button key={index} className={style}>
