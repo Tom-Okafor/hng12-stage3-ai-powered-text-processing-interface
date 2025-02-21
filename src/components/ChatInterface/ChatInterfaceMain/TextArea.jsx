@@ -9,6 +9,7 @@ export default function TextArea({
   setTyping,
   setInputedText,
   inputedText,
+  setNavigationContentIndex,
 }) {
   const { interfaceThemeColor } = useContext(ChatInterfaceContext);
   return (
@@ -31,6 +32,9 @@ export default function TextArea({
       onBlur={() => {
         setTyping(false);
       }}
+      onFocus={() => {
+        setNavigationContentIndex(0);
+      }}
     ></textarea>
   );
 }
@@ -42,4 +46,5 @@ TextArea.propTypes = {
   setTyping: PropTypes.func.isRequired,
   setInputedText: PropTypes.func.isRequired,
   inputedText: PropTypes.string.isRequired,
+  setNavigationContentIndex: PropTypes.func.isRequired,
 };
