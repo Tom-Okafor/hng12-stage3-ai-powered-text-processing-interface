@@ -19,6 +19,7 @@ export default function ChatInterface() {
   const [interfaceBackground, setInterfaceBackground] = useState(0);
   const [userAvatar, setUserAvatar] = useState("profile.svg");
   const [chatInteractions, setChatInteractions] = useState([]);
+  const [menuVisibility, setMenuVisibility] = useState(false);
   return (
     <section className="flex flex-col h-dvh">
       <ChatInterfaceContext.Provider
@@ -31,6 +32,8 @@ export default function ChatInterface() {
           setUserAvatar,
           chatInteractions,
           setChatInteractions,
+          menuVisibility,
+          setMenuVisibility,
         }}
       >
         <NavigationContentContext.Provider
