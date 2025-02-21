@@ -8,6 +8,7 @@ export default function LoadSignal({
   marginRight,
   source,
   classname,
+  label,
 }) {
   const { interfaceThemeColor } = useContext(ChatInterfaceContext);
   return (
@@ -18,6 +19,9 @@ export default function LoadSignal({
         marginLeft: marginLeft,
         marginRight: marginRight,
       }}
+      aria-label={label}
+      role="alert"
+      aria-live="polite"
     >
       <div className="*:h-[15px] *:w-[15px] *:rounded-full bg-[#000000aa] rounded-full px-4 py-2 flex gap-2 items-center justify-between">
         <div
@@ -50,6 +54,7 @@ LoadSignal.propTypes = {
   marginRight: PropTypes.string,
   source: PropTypes.string,
   classname: PropTypes.string,
+  label: PropTypes.string,
 };
 
 LoadSignal.defaultProps = {

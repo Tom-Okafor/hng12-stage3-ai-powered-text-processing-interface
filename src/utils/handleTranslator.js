@@ -17,11 +17,9 @@ export async function handleTranslator(text, targetLanguage) {
       sourceLanguage,
       targetLanguage
     ) !== "readily"
-  ) {
-    return "Sorry this translation cannot be done at this moment";
-  } else {
-    console.log("available");
-  }
+  )
+    return "Sorry, this translation cannot be executed.";
+
   try {
     const translator = await self.ai.translator.create({
       sourceLanguage,

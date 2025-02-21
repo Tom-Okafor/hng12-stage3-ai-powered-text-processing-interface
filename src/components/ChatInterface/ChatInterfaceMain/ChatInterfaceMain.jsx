@@ -11,6 +11,29 @@ import TextArea from "./TextArea.jsx";
 import UserMessageBlock from "./UserMessageBlock.jsx";
 import BotMessageBlock from "./BotMessageBlock.jsx";
 
+function getTime() {
+  const time = new Date();
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let currentTime;
+  let period;
+  if (hours > 12) {
+    hours = hours - 12;
+    period = "pm";
+  } else if (hours === 12) {
+    period = "pm";
+  } else {
+    period = "am";
+  }
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  currentTime = `${hours}:${minutes} ${period}`;
+  return currentTime;
+}
 export default function ChatInterfaceMain() {
   const {
     interfaceBackground,
@@ -41,6 +64,7 @@ export default function ChatInterfaceMain() {
         detectedLanguage: detectedLanguage.fullDetectedLanguage,
         detectedCode: detectedLanguage.detectedLanguage,
         certainty: detectedLanguage.resultConfidence,
+        time: getTime(),
       },
     ]);
     setInputedText("");
@@ -49,7 +73,6 @@ export default function ChatInterfaceMain() {
   }
 
   async function handleTranslate(text) {
-    console.log(text);
     try {
       const translatedText = await handleTranslator(text, selectedLanguage);
       console.log(translatedText);
@@ -61,6 +84,7 @@ export default function ChatInterfaceMain() {
           detectedLanguage: null,
           detectedCode: null,
           certainty: null,
+          time: getTime(),
         },
       ]);
     } catch (error) {
@@ -81,6 +105,7 @@ export default function ChatInterfaceMain() {
           detectedLanguage: null,
           detectedCode: null,
           certainty: null,
+          time: getTime(),
         },
       ]);
       const summarizedText = await handleSummarizer(params);
@@ -92,6 +117,7 @@ export default function ChatInterfaceMain() {
           detectedLanguage: null,
           detectedCode: null,
           certainty: null,
+          time: getTime(),
         },
       ]);
     } catch (error) {
@@ -109,7 +135,11 @@ export default function ChatInterfaceMain() {
   }, [chatInteractions, isTyping, isLoading]);
 
   return (
-    <section className="relative flex-1 min-h-full flex flex-col items-center p-2 md:p-8 pb-2">
+    <section
+      className="relative flex-1 min-h-full flex flex-col items-center p-2 md:p-8 pb-2"
+      aria-atomic="true"
+      aria-relevant="additions text"
+    >
       <div
         style={{
           background: `linear-gradient(60deg,#00000053,transparent,#00000083),url(${chatBackgrounds[interfaceBackground]})`,
@@ -124,12 +154,15 @@ export default function ChatInterfaceMain() {
           chatInteractions.map((interaction, index) => (
             <div
               key={index}
-              className="z-10"
+              className="z-10 space-y-2"
               style={{
                 marginLeft: interaction.type === "user" && "auto",
                 marginRight: interaction.type !== "user" && "auto",
               }}
             >
+              <p className="font-itim text-white text-lg py-1 px-2 w-fit rounded-full bg-[#00000088]">
+                {interaction.time}
+              </p>
               {interaction.type === "user" ? (
                 <UserMessageBlock
                   interaction={interaction}
@@ -146,7 +179,13 @@ export default function ChatInterfaceMain() {
           ))}
       </div>
 
-      {!!isTyping && <LoadSignal marginLeft="auto" source={userAvatar} />}
+      {!!isTyping && (
+        <LoadSignal
+          marginLeft="auto"
+          source={userAvatar}
+          label="user is typing"
+        />
+      )}
 
       {!!isLoading && (
         <LoadSignal
@@ -154,6 +193,7 @@ export default function ChatInterfaceMain() {
           marginRight="auto"
           classname="bot"
           source="linguaSwift-logo.png"
+          label="Response Loading..."
         />
       )}
 
