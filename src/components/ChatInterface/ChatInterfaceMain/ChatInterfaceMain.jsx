@@ -6,6 +6,7 @@ import { handleLanguageDetector } from "../../../utils/handleLanguageDetector";
 import { handleTranslator } from "../../../utils/handleTranslator";
 import { handleSummarizer } from "../../../utils/handleSummarizer.js";
 import SendButton from "./SendButton.jsx";
+import ActionButton from "./ActionButton.jsx";
 
 export default function ChatInterfaceMain() {
   const {
@@ -221,30 +222,24 @@ export default function ChatInterfaceMain() {
                         </option>
                       </select>
                     </label>
-                    <button
-                      className="border-4 w-full rounded-2xl text-white font-bold font-itim text-lg cursor-pointer tracking-widest"
-                      style={{ borderColor: interfaceThemeColor }}
-                      onClick={() => {
-                        setLoading(true);
-                        handleTranslate(interaction.message);
-                      }}
-                    >
-                      Translate
-                    </button>
+                    <ActionButton
+                      processFunc={handleTranslate}
+                      setLoading={setLoading}
+                      interaction={interaction}
+                      width="100%"
+                      text="Translate"
+                    />
                   </div>
 
                   {interaction.message.length >= 150 &&
                     interaction.detectedCode === "en" && (
-                      <button
-                        className="border-4 w-[85%] rounded-2xl bg-[#000000cc] px-4 py-2 text-white font-bold font-itim text-lg space-y-1 tracking-widest"
-                        style={{ borderColor: interfaceThemeColor }}
-                        onClick={() => {
-                          setLoading(true);
-                          handleSummarize(interaction.message);
-                        }}
-                      >
-                        Summarize
-                      </button>
+                      <ActionButton
+                        processFunc={handleSummarize}
+                        setLoading={setLoading}
+                        interaction={interaction}
+                        width="85%"
+                        text="Summarize"
+                      />
                     )}
                 </div>
               )}
