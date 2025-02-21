@@ -9,6 +9,8 @@ import SendButton from "./SendButton.jsx";
 import ActionButton from "./ActionButton.jsx";
 import LoadSignal from "./LoadSignal.jsx";
 import Select from "./Select.jsx";
+import TextArea from "./TextArea.jsx";
+import Image from "./Image.jsx";
 
 export default function ChatInterfaceMain() {
   const {
@@ -157,17 +159,7 @@ export default function ChatInterfaceMain() {
                     </>
                   )}
                 </div>
-                <img
-                  src={
-                    interaction.type === "user"
-                      ? userAvatar
-                      : "linguaSwift-logo.png"
-                  }
-                  alt="profile"
-                  aria-hidden="true"
-                  className="w-[50px] object-contain z-50 rounded-full backdrop-blur-[3px]"
-                  style={{ border: `3px solid ${interfaceThemeColor}` }}
-                />
+                <Image interaction={interaction} userAvatar={userAvatar} />
               </div>
 
               {interaction.type === "user" && (
@@ -222,26 +214,14 @@ export default function ChatInterfaceMain() {
           borderColor: interfaceThemeColor,
         }}
       >
-        <textarea
-          className="border-4  w-full min-h-[100px] rounded-2xl backdrop-blur-[5px] bg-[#000000cc] focus:border-6 focus:outline-0 px-4 py-2 pr-[70px] text-white font-medium font-itim text-lg resize-none tracking-wider"
-          style={{ borderColor: interfaceThemeColor }}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              setSelectedLanguage("en");
-              handleSubmit();
-            }
-          }}
-          value={inputedText}
-          onChange={(event) => {
-            setInputError(null);
-            setInputedText(event.target.value);
-            setTyping(true);
-          }}
-          onBlur={() => {
-            setTyping(false);
-          }}
-        ></textarea>
+        <TextArea
+          setSelectedLanguage={setSelectedLanguage}
+          setInputError={setInputError}
+          setInputedText={setInputedText}
+          setTyping={setTyping}
+          inputedText={inputedText}
+          handleSubmit={handleSubmit}
+        />
 
         <SendButton
           handleSubmit={handleSubmit}
