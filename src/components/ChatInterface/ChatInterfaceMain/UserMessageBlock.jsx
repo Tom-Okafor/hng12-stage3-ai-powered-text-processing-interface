@@ -25,7 +25,7 @@ export default function UserMessageBlock(props) {
     >
       <div className="flex gap-3 items-start">
         <div
-          className={`max-w-[400px] rounded-2xl z-30 p-4 px-8 shadow-[0px_0px_5px_3px_#777] space-y-2`}
+          className={`max-w-[350px] md:max-w-[400px]  rounded-2xl z-30 p-4 md:px-8 shadow-[0px_0px_5px_3px_#777] space-y-2`}
           style={{
             backgroundColor: interfaceThemeColor,
           }}
@@ -34,13 +34,21 @@ export default function UserMessageBlock(props) {
             {interaction.message}
           </p>
           <>
-            <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim  tracking-wider">
-              {!!interaction.detectedLanguage &&
-                `Language: ${interaction.detectedLanguage}`}
-            </p>
-            <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim tracking-wider">
-              {!!interaction.certainty && `Certainty: ${interaction.certainty}`}
-            </p>
+            {!!interaction.detectedLanguage && (
+              <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim  tracking-wider">
+                Language: {interaction.detectedLanguage}
+              </p>
+            )}
+
+            {interaction.certainty ? (
+              <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim tracking-wider">
+                Certainty: {interaction.certainty}%
+              </p>
+            ) : (
+              <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim tracking-wider">
+                Sorry, language detection is not supported.
+              </p>
+            )}
           </>
         </div>
         <Image interaction={interaction} />

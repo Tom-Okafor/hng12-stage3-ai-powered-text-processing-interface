@@ -127,3 +127,11 @@
     background-size: contain !important;
     background-attachment: fixed !important;
 }
+
+
+
+@media screen and (min-width: 768px) {
+.bot {
+    padding-left: 100px;    
+}
+}

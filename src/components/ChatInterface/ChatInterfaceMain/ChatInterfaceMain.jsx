@@ -40,7 +40,7 @@ export default function ChatInterfaceMain() {
         message: inputedText,
         detectedLanguage: detectedLanguage.fullDetectedLanguage,
         detectedCode: detectedLanguage.detectedLanguage,
-        certainty: `${detectedLanguage.resultConfidence}%`,
+        certainty: detectedLanguage.resultConfidence,
       },
     ]);
     setInputedText("");
@@ -109,7 +109,7 @@ export default function ChatInterfaceMain() {
   }, [chatInteractions, isTyping, isLoading]);
 
   return (
-    <section className="relative flex-1 min-h-full flex flex-col items-center p-8 pb-2">
+    <section className="relative flex-1 min-h-full flex flex-col items-center p-2 md:p-8 pb-2">
       <div
         style={{
           background: `linear-gradient(60deg,#00000053,transparent,#00000083),url(${chatBackgrounds[interfaceBackground]})`,
@@ -119,7 +119,7 @@ export default function ChatInterfaceMain() {
           setNavigationContentIndex(0);
         }}
       ></div>
-      <div className="flex flex-col gap-8 w-full mt-20 mb-[150px] pl-[100px]">
+      <div className="flex flex-col gap-10 w-full mt-20 mb-[150px] md:pl-[100px]">
         {!!chatInteractions.length &&
           chatInteractions.map((interaction, index) => (
             <div
@@ -152,13 +152,13 @@ export default function ChatInterfaceMain() {
         <LoadSignal
           flexDirection="row-reverse"
           marginRight="auto"
-          padding="100px"
+          classname="bot"
           source="linguaSwift-logo.png"
         />
       )}
 
       <div
-        className="w-[80%] flex justify-center fixed bottom-[10px] z-50"
+        className="w-full md:w-[80%] flex justify-center fixed bottom-[10px] z-50"
         style={{
           borderColor: interfaceThemeColor,
         }}
@@ -181,7 +181,7 @@ export default function ChatInterfaceMain() {
 
       {inputError && (
         <p
-          className="text-lg text-red-700 font-black font-autour z-50 bg-[#ffffff99] p-2 rounded-full mb-2"
+          className="text-lg text-red-700 font-black font-autour z-50 bg-[#ffffff99] p-2 rounded-full absolute bottom-[20px]"
           role="alert"
           aria-live="polite"
         >

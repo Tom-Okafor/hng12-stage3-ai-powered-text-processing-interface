@@ -6,18 +6,17 @@ export default function LoadSignal({
   flexDirection,
   marginLeft,
   marginRight,
-  padding,
   source,
+  classname,
 }) {
   const { interfaceThemeColor } = useContext(ChatInterfaceContext);
   return (
     <div
-      className="mt-auto mb-[120px] z-10 flex gap-4"
+      className={`mt-auto mb-[120px] z-10 flex gap-4 ${classname}`}
       style={{
         flexDirection: flexDirection,
         marginLeft: marginLeft,
         marginRight: marginRight,
-        paddingLeft: padding,
       }}
     >
       <div className="*:h-[15px] *:w-[15px] *:rounded-full bg-[#000000aa] rounded-full px-4 py-2 flex gap-2 items-center justify-between">
@@ -49,8 +48,8 @@ LoadSignal.propTypes = {
   flexDirection: PropTypes.oneOf(["row", "row-reverse"]),
   marginLeft: PropTypes.string,
   marginRight: PropTypes.string,
-  padding: PropTypes.string,
   source: PropTypes.string,
+  classname: PropTypes.string,
 };
 
 LoadSignal.defaultProps = {

@@ -13,13 +13,13 @@ export default function BotMessageBlock({ interaction, }) {
       }}
     >
       <div
-        className="flex gap-3 items-center"
+        className="flex gap-3 items-start"
         style={{
           flexDirection: interaction.type === "user" ? "row" : "row-reverse",
         }}
       >
         <div
-          className={`max-w-[400px] rounded-2xl z-30 p-4 px-8 shadow-[0px_0px_5px_3px_#777] space-y-2`}
+          className={`max-w-[300px] md:max-w-[400px] min-w-[200px] rounded-2xl z-30 p-4 md:px-8 shadow-[0px_0px_5px_3px_#777] space-y-2 border-2 md:border-0 border-red-faint`}
           style={{
             backgroundColor: interfaceThemeColor,
           }}
