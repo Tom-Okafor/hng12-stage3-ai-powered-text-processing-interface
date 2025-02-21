@@ -17,6 +17,7 @@ export default function ChatInterfaceMain() {
     interfaceThemeColor,
     chatInteractions,
     setChatInteractions,
+    userAvatar,
   } = useContext(ChatInterfaceContext);
   const { setNavigationContentIndex } = useContext(NavigationContentContext);
   const [inputedText, setInputedText] = useState("");
@@ -145,13 +146,14 @@ export default function ChatInterfaceMain() {
           ))}
       </div>
 
-      {!!isTyping && <LoadSignal marginLeft="auto" />}
+      {!!isTyping && <LoadSignal marginLeft="auto" source={userAvatar} />}
 
       {!!isLoading && (
         <LoadSignal
           flexDirection="row-reverse"
           marginRight="auto"
           padding="100px"
+          source="linguaSwift-logo.png"
         />
       )}
 

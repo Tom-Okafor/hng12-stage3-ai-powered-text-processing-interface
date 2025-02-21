@@ -23,7 +23,7 @@ export default function UserMessageBlock(props) {
         marginLeft: "auto",
       }}
     >
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-3 items-start">
         <div
           className={`max-w-[400px] rounded-2xl z-30 p-4 px-8 shadow-[0px_0px_5px_3px_#777] space-y-2`}
           style={{
@@ -35,12 +35,11 @@ export default function UserMessageBlock(props) {
           </p>
           <>
             <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim  tracking-wider">
-              {" "}
-              Language: {interaction.detectedLanguage}
+              {!!interaction.detectedLanguage &&
+                `Language: ${interaction.detectedLanguage}`}
             </p>
             <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim tracking-wider">
-              {" "}
-              Certainty: {interaction.certainty}
+              {!!interaction.certainty && `Certainty: ${interaction.certainty}`}
             </p>
           </>
         </div>
