@@ -8,7 +8,7 @@ export async function handleSummarizer(text) {
     return "Sorry, this feature is not supported.";
 
   const options = {
-    type: "tl;dr",
+    type: "headline",
     length: "long",
   };
   console.log((await handleLanguageDetector(text)).detectedLanguage);

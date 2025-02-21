@@ -7,6 +7,7 @@ import { handleTranslator } from "../../../utils/handleTranslator";
 import { handleSummarizer } from "../../../utils/handleSummarizer.js";
 import SendButton from "./SendButton.jsx";
 import ActionButton from "./ActionButton.jsx";
+import LoadSignal from "./LoadSignal.jsx";
 
 export default function ChatInterfaceMain() {
   const {
@@ -247,56 +248,10 @@ export default function ChatInterfaceMain() {
           ))}
       </div>
 
-      {!!isTyping && (
-        <div className="mt-auto mb-[120px] z-10 ml-auto flex gap-4">
-          <div className="*:h-[15px] *:w-[15px] *:rounded-full bg-[#000000aa] rounded-full px-4 py-2 flex gap-2 items-center justify-between">
-            <div
-              style={{ backgroundColor: interfaceThemeColor }}
-              className="animate-lift-2"
-            ></div>
-            <div
-              style={{ backgroundColor: interfaceThemeColor }}
-              className="animate-lift-1"
-            ></div>
-            <div
-              style={{ backgroundColor: interfaceThemeColor }}
-              className="animate-lift-3"
-            ></div>
-          </div>
-          <img
-            src={userAvatar}
-            alt="profile"
-            aria-hidden="true"
-            className="w-[50px] object-contain z-50 rounded-full backdrop-blur-[3px] "
-            style={{ border: `3px solid ${interfaceThemeColor}` }}
-          />
-        </div>
-      )}
+      {!!isTyping && <LoadSignal marginLeft="auto" />}
 
       {!!isLoading && (
-        <div className="mt-auto mb-[120px] z-10 mr-auto flex flex-row-reverse gap-4">
-          <div className="*:h-[15px] *:w-[15px] *:rounded-full bg-[#000000aa] rounded-full px-4 py-2 flex gap-2 items-center justify-between">
-            <div
-              style={{ backgroundColor: interfaceThemeColor }}
-              className="animate-lift-2"
-            ></div>
-            <div
-              style={{ backgroundColor: interfaceThemeColor }}
-              className="animate-lift-1"
-            ></div>
-            <div
-              style={{ backgroundColor: interfaceThemeColor }}
-              className="animate-lift-3"
-            ></div>
-          </div>
-          <img
-            src="linguaSwift-logo.png"
-            alt="profile"
-            aria-hidden="true"
-            className="w-[50px] object-contain z-50 rounded-full backdrop-blur-[3px] "
-            style={{ border: `3px solid ${interfaceThemeColor}` }}
-          />
-        </div>
+        <LoadSignal flexDirection="row-reverse" marginRight="auto" padding='100px' />
       )}
 
       <div
