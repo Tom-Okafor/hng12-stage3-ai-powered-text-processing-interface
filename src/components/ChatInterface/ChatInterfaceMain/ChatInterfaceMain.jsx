@@ -75,14 +75,14 @@ export default function ChatInterfaceMain() {
   async function handleTranslate(text) {
     try {
       const translatedText = await handleTranslator(text, selectedLanguage);
-      console.log(translatedText);
+      const detectedLang = await handleLanguageDetector(translatedText);
       setChatInteractions((prevState) => [
         ...prevState,
         {
           type: "bot",
           message: translatedText,
           detectedLanguage: null,
-          detectedCode: null,
+          detectedCode: detectedLang.detectedLanguage,
           certainty: null,
           time: getTime(),
         },
