@@ -18,6 +18,7 @@ export default function ChatInterface() {
   const [interfaceThemeColor, setInterfaceThemeColor] = useState("#ffc8db");
   const [interfaceBackground, setInterfaceBackground] = useState(0);
   const [userAvatar, setUserAvatar] = useState("profile.svg");
+  const [chatInteractions, setChatInteractions] = useState([]);
   return (
     <section className="flex flex-col h-dvh">
       <ChatInterfaceContext.Provider
@@ -28,6 +29,8 @@ export default function ChatInterface() {
           setInterfaceBackground,
           userAvatar,
           setUserAvatar,
+          chatInteractions,
+          setChatInteractions,
         }}
       >
         <NavigationContentContext.Provider
