@@ -125,4 +125,5 @@
     inset: 0;
     position: absolute;
     background-size: contain !important;
+    background-attachment: fixed !important;
 }

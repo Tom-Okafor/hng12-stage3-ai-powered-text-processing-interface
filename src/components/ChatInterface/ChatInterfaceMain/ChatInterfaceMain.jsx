@@ -4,6 +4,7 @@ import { NavigationContentContext } from "../../../contexts/UseNavigationContent
 import { chatBackgrounds } from "../../../constants";
 import { handleLanguageDetector } from "../../../utils/handleLanguageDetector";
 import { handleTranslator } from "../../../utils/handleTranslator";
+import { handleSummarizer } from "../../../utils/handleSummarizer.js";
 
 export default function ChatInterfaceMain() {
   const {
@@ -17,13 +18,15 @@ export default function ChatInterfaceMain() {
   const [inputedText, setInputedText] = useState("");
   const [inputError, setInputError] = useState(null);
   const [isTyping, setTyping] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   async function handleSubmit() {
     if (inputedText.trim() === "") {
       setInputError("Please enter a message");
       return;
     }
     const detectedLanguage = await handleLanguageDetector(inputedText);
+    detectedLanguage.detectedLanguage === "en" && setSelectedLanguage("pt");
     setChatInteractions((prevState) => [
       ...prevState,
       {
@@ -39,22 +42,57 @@ export default function ChatInterfaceMain() {
     setTyping(false);
   }
 
-  async function handleTranslate() {
-    const translatedText = await handleTranslator(
-      inputedText,
-      selectedLanguage
-    );
-    console.log(translatedText);
-    setChatInteractions((prevState) => [
-      ...prevState,
-      {
-        type: "bot",
-        message: translatedText,
-        detectedLanguage: null,
-        detectedCode: null,
-        certainty: null,
-      },
-    ]);
+  async function handleTranslate(text) {
+    console.log(text);
+    try {
+      const translatedText = await handleTranslator(text, selectedLanguage);
+      console.log(translatedText);
+      setChatInteractions((prevState) => [
+        ...prevState,
+        {
+          type: "bot",
+          message: translatedText,
+          detectedLanguage: null,
+          detectedCode: null,
+          certainty: null,
+        },
+      ]);
+    } catch (error) {
+      throw error.message;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleSummarize(params) {
+    try {
+      setLoading(true);
+      setChatInteractions((prevState) => [
+        ...prevState,
+        {
+          type: "bot",
+          message: 'Please wait. This may take a while...',
+          detectedLanguage: null,
+          detectedCode: null,
+          certainty: null,
+        },
+      ]);
+      const summarizedText = await handleSummarizer(params);
+      setChatInteractions((prevState) => [
+       ...prevState,
+        {
+          type: "bot",
+          message: summarizedText,
+          detectedLanguage: null,
+          detectedCode: null,
+          certainty: null,
+        },
+      ]);
+    } catch (error) {
+      throw error.message;
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -62,7 +100,7 @@ export default function ChatInterfaceMain() {
       top: document.body.scrollHeight,
       behavior: "smooth",
     });
-  }, [chatInteractions, isTyping]);
+  }, [chatInteractions, isTyping, isLoading]);
 
   return (
     <section className="relative flex-1 min-h-full flex flex-col items-center p-8 pb-2">
@@ -75,7 +113,7 @@ export default function ChatInterfaceMain() {
           setNavigationContentIndex(0);
         }}
       ></div>
-      <div className="flex flex-col gap-8 w-full mt-20 mb-[150px]">
+      <div className="flex flex-col gap-8 w-full mt-20 mb-[150px] pl-[100px]">
         {!!chatInteractions.length &&
           chatInteractions.map((interaction, index) => (
             <div
@@ -86,7 +124,13 @@ export default function ChatInterfaceMain() {
                 marginRight: interaction.type !== "user" && "auto",
               }}
             >
-              <div className="flex gap-3 items-center">
+              <div
+                className="flex gap-3 items-center"
+                style={{
+                  flexDirection:
+                    interaction.type === "user" ? "row" : "row-reverse",
+                }}
+              >
                 <div
                   className={`max-w-[400px] rounded-2xl z-30 p-4 px-8 shadow-[0px_0px_5px_3px_#777] space-y-2`}
                   style={{
@@ -96,84 +140,113 @@ export default function ChatInterfaceMain() {
                   <p className="text-lg text-black font-itim font-semi-bold">
                     {interaction.message}
                   </p>
-                  <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim  tracking-wider">
-                    {" "}
-                    Language: {interaction.detectedLanguage}
-                  </p>
-                  <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim tracking-wider">
-                    {" "}
-                    Certainty: {interaction.certainty}
-                  </p>
+                  {interaction.type === "user" && (
+                    <>
+                      <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim  tracking-wider">
+                        {" "}
+                        Language: {interaction.detectedLanguage}
+                      </p>
+                      <p className="text-lg py-1 px-2 rounded-2xl w-fit text-white bg-[#00000044] font-itim tracking-wider">
+                        {" "}
+                        Certainty: {interaction.certainty}
+                      </p>
+                    </>
+                  )}
                 </div>
                 <img
-                  src={userAvatar}
+                  src={
+                    interaction.type === "user"
+                      ? userAvatar
+                      : "linguaSwift-logo.png"
+                  }
                   alt="profile"
                   aria-hidden="true"
                   className="w-[50px] object-contain z-50 rounded-full backdrop-blur-[3px]"
                   style={{ border: `3px solid ${interfaceThemeColor}` }}
                 />
               </div>
-              <div
-                className="border-4 w-[85%] rounded-2xl bg-[#000000cc] px-4 py-2 text-white font-medium font-itim text-lg space-y-1"
-                style={{ borderColor: interfaceThemeColor }}
-              >
-                <label htmlFor="language" className="flex gap-2">
-                  Translate To:
-                  <select
-                    id="language"
-                    className="bg-[#000000cc]"
-                    onChange={(event) => {
-                      setSelectedLanguage(event.target.value);
-                    }}
+
+              {interaction.type === "user" && (
+                <div className="space-y-2">
+                  <div
+                    className="border-4 w-[85%] rounded-2xl bg-[#000000cc] px-4 py-2 text-white font-medium font-itim text-lg space-y-1"
+                    style={{ borderColor: interfaceThemeColor }}
                   >
-                    <option
-                      value="en"
-                      disabled={interaction.detectedCode === "en"}
+                    <label htmlFor="language" className="flex gap-2">
+                      Translate To:
+                      <select
+                        id="language"
+                        className="bg-[#000000cc]"
+                        value={selectedLanguage}
+                        onChange={(event) => {
+                          setSelectedLanguage(event.target.value);
+                        }}
+                      >
+                        <option
+                          value="en"
+                          disabled={interaction.detectedCode === "en"}
+                        >
+                          English
+                        </option>
+                        <option
+                          value="pt"
+                          disabled={interaction.detectedCode === "pt"}
+                        >
+                          Portuguese
+                        </option>
+                        <option
+                          value="es"
+                          disabled={interaction.detectedCode === "es"}
+                        >
+                          Spanish
+                        </option>
+                        <option
+                          value="ru"
+                          disabled={interaction.detectedCode === "ru"}
+                        >
+                          Russian
+                        </option>
+                        <option
+                          value="tr"
+                          disabled={interaction.detectedCode === "tr"}
+                        >
+                          Turkish
+                        </option>
+                        <option
+                          value="fr"
+                          disabled={interaction.detectedCode === "fr"}
+                        >
+                          French
+                        </option>
+                      </select>
+                    </label>
+                    <button
+                      className="border-4 w-full rounded-2xl text-white font-bold font-itim text-lg cursor-pointer tracking-widest"
+                      style={{ borderColor: interfaceThemeColor }}
+                      onClick={() => {
+                        setLoading(true);
+                        handleTranslate(interaction.message);
+                      }}
                     >
-                      English
-                    </option>
-                    <option
-                      value="pt"
-                      disabled={interaction.detectedCode === "pt"}
-                    >
-                      Portuguese
-                    </option>
-                    <option
-                      value="es"
-                      disabled={interaction.detectedCode === "es"}
-                    >
-                      Spanish
-                    </option>
-                    <option
-                      value="ru"
-                      disabled={interaction.detectedCode === "ru"}
-                    >
-                      Russian
-                    </option>
-                    <option
-                      value="tr"
-                      disabled={interaction.detectedCode === "tr"}
-                    >
-                      Turkish
-                    </option>
-                    <option
-                      value="fr"
-                      disabled={interaction.detectedCode === "fr"}
-                    >
-                      French
-                    </option>
-                  </select>
-                </label>
-                <button
-                  className="border-4 w-full rounded-2xl text-white font-medium font-itim text-lg cursor-pointer"
-                  style={{ borderColor: interfaceThemeColor }}
-                  onClick={() => {
-                    handleTranslate();
-                  }}
-                >
-                  translate
-                </button>
-              </div>
+                      Translate
+                    </button>
+                  </div>
+
+                  {interaction.message.length >= 150 &&
+                    interaction.detectedCode === "en" && (
+                      <button
+                        className="border-4 w-[85%] rounded-2xl bg-[#000000cc] px-4 py-2 text-white font-bold font-itim text-lg space-y-1 tracking-widest"
+                        style={{ borderColor: interfaceThemeColor }}
+                        onClick={() => {
+                          setLoading(true);
+                          handleSummarize(interaction.message);
+                        }}
+                      >
+                        Summarize
+                      </button>
+                    )}
+                </div>
+              )}
             </div>
           ))}
       </div>
@@ -204,6 +277,32 @@ export default function ChatInterfaceMain() {
         </div>
       )}
 
+      {!!isLoading && (
+        <div className="mt-auto mb-[120px] z-10 mr-auto flex flex-row-reverse gap-4">
+          <div className="*:h-[15px] *:w-[15px] *:rounded-full bg-[#000000aa] rounded-full px-4 py-2 flex gap-2 items-center justify-between">
+            <div
+              style={{ backgroundColor: interfaceThemeColor }}
+              className="animate-lift-2"
+            ></div>
+            <div
+              style={{ backgroundColor: interfaceThemeColor }}
+              className="animate-lift-1"
+            ></div>
+            <div
+              style={{ backgroundColor: interfaceThemeColor }}
+              className="animate-lift-3"
+            ></div>
+          </div>
+          <img
+            src="linguaSwift-logo.png"
+            alt="profile"
+            aria-hidden="true"
+            className="w-[50px] object-contain z-50 rounded-full backdrop-blur-[3px] "
+            style={{ border: `3px solid ${interfaceThemeColor}` }}
+          />
+        </div>
+      )}
+
       <div
         className="w-[80%] flex justify-center fixed bottom-[10px] z-50"
         style={{
@@ -216,6 +315,7 @@ export default function ChatInterfaceMain() {
           onKeyDown={(event) => {
             if (event.key === "Enter") {
               event.preventDefault();
+              setSelectedLanguage("en");
               handleSubmit();
             }
           }}
@@ -232,7 +332,10 @@ export default function ChatInterfaceMain() {
 
         <button
           className="absolute right-[20px] top-[50%] translate-y-[-50%] cursor-pointer"
-          onClick={handleSubmit}
+          onClick={() => {
+            setSelectedLanguage("en");
+            handleSubmit();
+          }}
         >
           <svg
             width="45px"
