@@ -26,9 +26,9 @@ export default function BotMessageBlock({ interaction }) {
     const speech = new SpeechSynthesisUtterance();
     speech.text = interaction.message;
     speech.lang = returnSpeechLang(interaction.detectedCode);
-    speech.volume = 1; // 0 to 1
-    speech.rate = 1; // 0.1 to 10
-    speech.pitch = 1; // 0 to 2
+    speech.volume = 1; 
+    speech.rate = 1; 
+    speech.pitch = 1; 
     speechSynthesis.speak(speech);
     const voices = speechSynthesis.getVoices();
     speech.voice =
