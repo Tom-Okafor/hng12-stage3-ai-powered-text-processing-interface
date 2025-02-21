@@ -27,6 +27,9 @@
     --animate-text: animate-heading 800ms 500ms ease-out forwards;
     --animate-appear: appear 1.5s ease forwards;
     --animate-disappear: disappear 1s ease forwards;
+    --animate-lift-1: lift 500ms infinite alternate forwards;
+    --animate-lift-2: lift 500ms 400ms infinite alternate forwards;
+    --animate-lift-3: lift 500ms 800ms infinite alternate forwards;
 
     @keyframes animate-heading {
         from {
@@ -71,6 +74,21 @@
             filter: blur(5px);
             -webkit-filter: blur(5px);
         }
+    }
+
+    @keyframes lift {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translateY(-5px);
+            -webkit-transform: translateY(-5px);
+            -moz-transform: translateY(-5px);
+            -ms-transform: translateY(-5px);
+            -o-transform: translateY(-5px);
+        }
+
     }
 
 }

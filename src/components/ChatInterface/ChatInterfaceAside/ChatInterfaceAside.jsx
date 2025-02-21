@@ -18,7 +18,7 @@ export default function ChatInterfaceAside() {
         boxShadow: `0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0 10px ${interfaceThemeColor}, 0px 0 10px ${interfaceThemeColor}, 0px 0 10px ${interfaceThemeColor}`,
         backgroundColor: `${interfaceThemeColor}`,
       }}
-      className={`h-full px-2 py-6 w-[80px] relative aside  flex flex-col gap-6 duration-300`}
+      className={`h-full px-2 py-6 w-[80px] aside  flex flex-col gap-6 duration-300 fixed z-90 mt-[60px]`}
     >
       {icons.map((icon, index) => (
         <AsideNavigationIcon

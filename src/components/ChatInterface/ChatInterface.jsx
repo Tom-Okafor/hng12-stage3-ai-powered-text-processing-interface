@@ -40,7 +40,11 @@ export default function ChatInterface() {
 
           <div className="flex-1 flex">
             <ChatInterfaceAside />
-            {!!navigationContentIndex && content[navigationContentIndex - 1]}
+            {!!navigationContentIndex && (
+              <div className="z-100 bg-white ml-[80px] mt-[60px] fixed">
+                {content[navigationContentIndex - 1]}
+              </div>
+            )}
             <ChatInterfaceMain />
           </div>
         </NavigationContentContext.Provider>
