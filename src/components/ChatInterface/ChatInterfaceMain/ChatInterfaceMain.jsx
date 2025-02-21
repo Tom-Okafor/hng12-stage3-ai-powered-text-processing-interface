@@ -8,6 +8,7 @@ import { handleSummarizer } from "../../../utils/handleSummarizer.js";
 import SendButton from "./SendButton.jsx";
 import ActionButton from "./ActionButton.jsx";
 import LoadSignal from "./LoadSignal.jsx";
+import Select from "./Select.jsx";
 
 export default function ChatInterfaceMain() {
   const {
@@ -172,57 +173,14 @@ export default function ChatInterfaceMain() {
               {interaction.type === "user" && (
                 <div className="space-y-2">
                   <div
-                    className="border-4 w-[85%] rounded-2xl bg-[#000000cc] px-4 py-2 text-white font-medium font-itim text-lg space-y-1"
+                    className="border-4 w-[85%] rounded-2xl bg-[#000000cc] px-4 py-2 pb-4 text-white font-medium font-itim text-lg space-y-2"
                     style={{ borderColor: interfaceThemeColor }}
                   >
-                    <label htmlFor="language" className="flex gap-2">
-                      Translate To:
-                      <select
-                        id="language"
-                        className="bg-[#000000cc]"
-                        value={selectedLanguage}
-                        onChange={(event) => {
-                          setSelectedLanguage(event.target.value);
-                        }}
-                      >
-                        <option
-                          value="en"
-                          disabled={interaction.detectedCode === "en"}
-                        >
-                          English
-                        </option>
-                        <option
-                          value="pt"
-                          disabled={interaction.detectedCode === "pt"}
-                        >
-                          Portuguese
-                        </option>
-                        <option
-                          value="es"
-                          disabled={interaction.detectedCode === "es"}
-                        >
-                          Spanish
-                        </option>
-                        <option
-                          value="ru"
-                          disabled={interaction.detectedCode === "ru"}
-                        >
-                          Russian
-                        </option>
-                        <option
-                          value="tr"
-                          disabled={interaction.detectedCode === "tr"}
-                        >
-                          Turkish
-                        </option>
-                        <option
-                          value="fr"
-                          disabled={interaction.detectedCode === "fr"}
-                        >
-                          French
-                        </option>
-                      </select>
-                    </label>
+                    <Select
+                      interaction={interaction}
+                      selectedLanguage={selectedLanguage}
+                      setSelectedLanguage={setSelectedLanguage}
+                    />
                     <ActionButton
                       processFunc={handleTranslate}
                       setLoading={setLoading}
@@ -251,7 +209,11 @@ export default function ChatInterfaceMain() {
       {!!isTyping && <LoadSignal marginLeft="auto" />}
 
       {!!isLoading && (
-        <LoadSignal flexDirection="row-reverse" marginRight="auto" padding='100px' />
+        <LoadSignal
+          flexDirection="row-reverse"
+          marginRight="auto"
+          padding="100px"
+        />
       )}
 
       <div
