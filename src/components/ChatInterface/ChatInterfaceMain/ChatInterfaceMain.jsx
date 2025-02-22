@@ -97,6 +97,7 @@ export default function ChatInterfaceMain() {
   async function handleSummarize(params) {
     try {
       setLoading(true);
+
       setChatInteractions((prevState) => [
         ...prevState,
         {
@@ -108,35 +109,45 @@ export default function ChatInterfaceMain() {
           time: getTime(),
         },
       ]);
+
       const summarizedText = await handleSummarizer(params);
+
+      const detectedLang = await handleLanguageDetector(summarizedText);
+
       setChatInteractions((prevState) => [
         ...prevState,
         {
           type: "bot",
           message: summarizedText,
-          detectedLanguage: null,
-          detectedCode: null,
-          certainty: null,
+          detectedLanguage: detectedLang.detectedLanguage,
+          detectedCode: detectedLang.detectedCode,
+          certainty: detectedLang.certainty,
           time: getTime(),
         },
       ]);
     } catch (error) {
+      console.error("Error during summarization:", error);
+
+      const fallbackMessage =
+        "Sorry, we are unable to return your summary at this time.";
+      const detectedLang = await handleLanguageDetector(fallbackMessage);
+
       setChatInteractions((prevState) => [
         ...prevState,
         {
           type: "bot",
-          message: `Sorry, we are unable to return your summary at this time.`,
-          detectedLanguage: null,
-          detectedCode: null,
+          message: fallbackMessage,
+          detectedLanguage: detectedLang.detectedLanguage,
+          detectedCode: detectedLang.detectedCode,
           certainty: null,
           time: getTime(),
         },
       ]);
-      throw error.message;
     } finally {
       setLoading(false);
     }
   }
+
 
   useEffect(() => {
     window.scrollTo({
@@ -148,7 +159,7 @@ export default function ChatInterfaceMain() {
   return (
     <section
       className="relative flex-1 min-h-full flex flex-col items-center p-2 md:p-8 pb-2"
-           aria-live="assertive"
+      aria-live="assertive"
     >
       <div
         style={{

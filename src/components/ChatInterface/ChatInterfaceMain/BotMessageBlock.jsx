@@ -23,24 +23,31 @@ export default function BotMessageBlock({ interaction }) {
 
   function handleSpeech() {
     console.log(interaction);
+
     const speech = new SpeechSynthesisUtterance();
     speech.text = interaction.message;
     speech.lang = returnSpeechLang(interaction.detectedCode);
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
-    speech.volume = 1; 
-    speech.rate = 1; 
-    speech.pitch = 1; 
-    speechSynthesis.speak(speech);
-    const voices = speechSynthesis.getVoices();
-    speech.voice =
-      voices.find(
-        (voice) => voice.lang === returnSpeechLang(interaction.detectedCode)
-      ) || voices.find((voice) => voice.lang === "en-UK");
-    console.log(speech.voice, speech.lang);
-    speechSynthesis.speak(speech);
+
+    const setVoice = () => {
+      const voices = speechSynthesis.getVoices();
+      speech.voice =
+        voices.find((voice) => voice.lang === speech.lang) ||
+        voices.find((voice) => voice.lang === "en-UK");
+
+      console.log(speech.voice, speech.lang);
+      speechSynthesis.speak(speech);
+    };
+
+    if (speechSynthesis.getVoices().length) {
+      setVoice(); 
+    } else {
+      speechSynthesis.addEventListener("voiceschanged", setVoice); 
+    }
   }
+
   return (
     <div
       className="flex flex-col z-50 gap-1.5"

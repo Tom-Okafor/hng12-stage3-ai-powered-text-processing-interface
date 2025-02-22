@@ -5,21 +5,38 @@ export async function handleSummarizer(text) {
     if (
       !("ai" in self && "summarizer" in self.ai) ||
       (await self.ai.summarizer.capabilities()).available === "no"
-    )
+    ) {
+      console.warn("Summarizer not available.");
       return "Sorry, this feature is not supported.";
+    }
 
     const options = {
       type: "headline",
       length: "long",
     };
-    console.log((await handleLanguageDetector(text)).detectedLanguage);
 
-    if ((await handleLanguageDetector(text)).detectedLanguage !== "en")
+    const { detectedLanguage } = await handleLanguageDetector(text);
+    console.log("Detected language:", detectedLanguage);
+
+    if (detectedLanguage !== "en") {
       return "Sorry, we are unable to summarize this language.";
+    }
 
-    const summarizer = await self.ai.summarizer.create(options);
-    const summary = await summarizer.summarize(text);
-    return summary;
+    async function createAndSummarize() {
+      try {
+        const summarizer = await self.ai.summarizer.create(options);
+        const summary = await summarizer.summarize(text);
+        return summary;
+      } catch (error) {
+        if (error.name === "InvalidStateError") {
+          console.warn("InvalidStateError encountered. Retrying...");
+          return createAndSummarize(); 
+        }
+        throw error; 
+      }
+    }
+
+    return await createAndSummarize();
   } catch (error) {
     console.error("Summarization failed:", error);
     return "Sorry, we are unable to summarize your text at this moment.";
