@@ -47,8 +47,7 @@ export default function BotMessageBlock({ interaction }) {
       style={{
         marginRight: "auto",
       }}
-      aria-live="assertive"
-      role="alert"
+    
     >
       <div
         className="flex gap-3 items-start"

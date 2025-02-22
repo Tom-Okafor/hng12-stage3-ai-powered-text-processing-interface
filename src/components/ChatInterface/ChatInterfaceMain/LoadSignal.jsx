@@ -21,7 +21,7 @@ export default function LoadSignal({
       }}
       aria-label={label}
       role="alert"
-      aria-live="polite"
+      aria-live="assertive"
     >
       <div className="*:h-[15px] *:w-[15px] *:rounded-full bg-[#000000aa] rounded-full px-4 py-2 flex gap-2 items-center justify-between">
         <div

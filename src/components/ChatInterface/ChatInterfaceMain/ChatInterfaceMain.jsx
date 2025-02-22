@@ -148,8 +148,7 @@ export default function ChatInterfaceMain() {
   return (
     <section
       className="relative flex-1 min-h-full flex flex-col items-center p-2 md:p-8 pb-2"
-      aria-atomic="true"
-      aria-relevant="additions text"
+           aria-live="assertive"
     >
       <div
         style={{
@@ -233,8 +232,8 @@ export default function ChatInterfaceMain() {
       {inputError && (
         <p
           className="text-lg text-red-700 font-black font-autour z-50 bg-[#ffffff99] p-2 rounded-full absolute bottom-[20px]"
-          role="alert"
-          aria-live="assertive"
+          role="status"
+          aria-live="polite"
         >
           {inputError}
         </p>

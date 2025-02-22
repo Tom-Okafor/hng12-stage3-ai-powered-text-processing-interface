@@ -41,7 +41,7 @@ export default function ChatInterface() {
         >
           <ChatInterfaceHeader />
 
-          <div className="flex-1 flex">
+          <div className="flex-1 flex" aria-live="assertive">
             <ChatInterfaceAside />
             {!!navigationContentIndex && (
               <div className="z-100 bg-white ml-[80px] mt-[60px] fixed">

@@ -2,6 +2,7 @@ import { avatars, contentHeadingStyles } from "../../../../constants";
 import { contentContainerStyles } from "../../../../constants";
 import { useContext } from "react";
 import { ChatInterfaceContext } from "../../../../contexts/UseChatInterfaceContext";
+import { avatarsNames } from "../../../../constants";
 
 const style =
   "w-[80px] h-[80px] rounded-full shadow-xl border-[3px] border-brown-thick hover:border-[3px] hover:border-red-thick  hover:shadow-2xl focus:border-[3px] focus:border-red-thick focus:shadow-2xl focus:outline-0";
@@ -30,8 +31,13 @@ export default function ProfileContent() {
               onClick={() => {
                 handleAvatarClick(avatar);
               }}
+              aria-label={avatarsNames[index]}
             >
-              <img src={avatar} alt="avatar" className="object-contain" />
+              <img
+                src={avatar}
+                alt={avatarsNames[index]}
+                className="object-contain"
+              />
             </button>
           );
         })}

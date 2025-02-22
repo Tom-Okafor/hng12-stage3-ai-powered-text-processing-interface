@@ -17,6 +17,7 @@ export default function ActionButton({
         setLoading(true);
         processFunc(interaction.message);
       }}
+      role="button"
     >
       {text}
     </button>

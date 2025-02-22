@@ -3,6 +3,7 @@ import { contentContainerStyles } from "../../../../constants";
 import { contentHeadingStyles } from "../../../../constants";
 import { useContext } from "react";
 import { ChatInterfaceContext } from "../../../../contexts/UseChatInterfaceContext";
+import { themeColoursNames } from "../../../../constants";
 
 const style =
   "w-[85px] h-[85px] rounded-lg shadow-xl hover:border-[3px] hover:border-red-thick hover:shadow-2xl focus:border-[3px] focus:border-red-thick  focus:shadow-2xl focus:outline-0`";
@@ -34,6 +35,7 @@ export default function ThemeContent() {
               onClick={() => {
                 handleThemeButtonClick(color);
               }}
+              aria-label={themeColoursNames[index]}
             ></button>
           );
         })}

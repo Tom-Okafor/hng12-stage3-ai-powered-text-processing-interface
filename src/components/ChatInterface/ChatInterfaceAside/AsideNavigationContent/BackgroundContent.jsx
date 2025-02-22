@@ -3,6 +3,7 @@ import { contentContainerStyles } from "../../../../constants";
 import { contentHeadingStyles } from "../../../../constants";
 import { useContext } from "react";
 import { ChatInterfaceContext } from "../../../../contexts/UseChatInterfaceContext";
+import { chatBackgroundsNames } from "../../../../constants";
 
 const style =
   "w-[150px] h-[250px] rounded-lg shadow-xl hover:border-[3px] hover:border-red-thick hover:shadow-2xl focus:border-[3px] focus:border-red-thick  focus:shadow-2xl focus:outline-0";
@@ -33,6 +34,7 @@ export default function BackgroundContent() {
               onClick={() => {
                 handleClick(index);
               }}
+              aria-label={chatBackgroundsNames[index]}
             >
               <img
                 src={background}

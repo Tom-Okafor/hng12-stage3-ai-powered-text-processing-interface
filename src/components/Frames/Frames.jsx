@@ -59,17 +59,19 @@ export default function Frames() {
   }
 
   return (
-    <div>
+    <div aria-live="assertive">
       <Logo height={50} fontSize='2xl' />
       <button
         className="fixed top-[50%] [transform:translateY(-50%)] left-[1%] md:left-[6%] scale-x-[-1]"
         onClick={handlePrevButtonClick}
+        aria-label="previous frame" 
       >
         <FrameNavigationIcon />
       </button>
       <button
         className="fixed top-[50%] [transform:translateY(-50%)] right-[1%] md:right-[6%]"
         onClick={handleNextButtonClick}
+        aria-label="next frame"
       >
         <FrameNavigationIcon />
       </button>
