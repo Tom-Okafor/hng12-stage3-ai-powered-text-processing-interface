@@ -15,6 +15,7 @@ export default function TextArea({
   return (
     <textarea
       className="border-4  w-full min-h-[100px] rounded-2xl backdrop-blur-[5px] bg-[#000000cc] focus:border-6 focus:outline-0 px-4 py-2 pr-[70px] text-white font-medium font-itim text-lg resize-none tracking-wider"
+      aria-label="Enter your text"
       style={{ borderColor: interfaceThemeColor }}
       onKeyDown={(event) => {
         if (event.key === "Enter") {

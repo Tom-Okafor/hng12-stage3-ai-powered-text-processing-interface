@@ -47,7 +47,8 @@ export default function BotMessageBlock({ interaction }) {
       style={{
         marginRight: "auto",
       }}
-      aria-live="polite"
+      aria-live="assertive"
+      role="alert"
     >
       <div
         className="flex gap-3 items-start"
@@ -61,7 +62,7 @@ export default function BotMessageBlock({ interaction }) {
             backgroundColor: interfaceThemeColor,
           }}
         >
-          <p className="text-lg text-black font-itim font-semi-bold">
+          <p className="text-lg text-black font-itim font-semi-bold" id="message">
             {interaction.message}
           </p>
         </div>

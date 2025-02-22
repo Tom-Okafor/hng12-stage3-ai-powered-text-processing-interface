@@ -11,6 +11,7 @@ export default function SendButton({ setSelectedLanguage, handleSubmit }) {
         setSelectedLanguage("en");
         handleSubmit();
       }}
+      aria-label="submit text"
     >
       <svg
         width="45px"
