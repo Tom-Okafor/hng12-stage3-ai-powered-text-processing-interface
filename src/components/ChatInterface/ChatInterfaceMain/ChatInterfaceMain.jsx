@@ -98,13 +98,15 @@ export default function ChatInterfaceMain() {
     try {
       setLoading(true);
 
+      const waitMessage = "Please wait. This may take a while...";
+      const detectWaitMessage = await handleLanguageDetector(waitMessage);
       setChatInteractions((prevState) => [
         ...prevState,
         {
           type: "bot",
-          message: "Please wait. This may take a while...",
-          detectedLanguage: null,
-          detectedCode: null,
+          message: waitMessage,
+          detectedLanguage: detectWaitMessage.fullDetectedLanguage,
+          detectedCode: detectWaitMessage.detectedLanguage,
           certainty: null,
           time: getTime(),
         },
@@ -147,7 +149,6 @@ export default function ChatInterfaceMain() {
       setLoading(false);
     }
   }
-
 
   useEffect(() => {
     window.scrollTo({
