@@ -234,7 +234,7 @@ export default function ChatInterfaceMain() {
         <p
           className="text-lg text-red-700 font-black font-autour z-50 bg-[#ffffff99] p-2 rounded-full absolute bottom-[20px]"
           role="alert"
-          aria-live="polite"
+          aria-live="assertive"
         >
           {inputError}
         </p>
