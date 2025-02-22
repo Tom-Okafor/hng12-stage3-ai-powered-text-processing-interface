@@ -119,8 +119,8 @@ export default function ChatInterfaceMain() {
         {
           type: "bot",
           message: summarizedText,
-          detectedLanguage: detectedLang.detectedLanguage,
-          detectedCode: detectedLang.detectedCode,
+          detectedLanguage: detectedLang.fullDetectedLanguage,
+          detectedCode: detectedLang.detectedLanguage,
           certainty: detectedLang.certainty,
           time: getTime(),
         },
@@ -137,8 +137,8 @@ export default function ChatInterfaceMain() {
         {
           type: "bot",
           message: fallbackMessage,
-          detectedLanguage: detectedLang.detectedLanguage,
-          detectedCode: detectedLang.detectedCode,
+          detectedLanguage: detectedLang.fullDetectedLanguage,
+          detectedCode: detectedLang.detectedLanguage,
           certainty: null,
           time: getTime(),
         },
