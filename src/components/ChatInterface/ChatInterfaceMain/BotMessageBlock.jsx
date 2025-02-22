@@ -22,20 +22,20 @@ export default function BotMessageBlock({ interaction }) {
   }
 
   function handleSpeech() {
-    console.log(interaction)
+    console.log(interaction);
     const speech = new SpeechSynthesisUtterance();
     speech.text = interaction.message;
     speech.lang = returnSpeechLang(interaction.detectedCode);
-    speech.volume = 1; // 0 to 1
-    speech.rate = 1; // 0.1 to 10
-    speech.pitch = 1; // 0 to 2
-    speechSynthesis.speak(speech);
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
     const voices = speechSynthesis.getVoices();
     speech.voice =
       voices.find(
         (voice) => voice.lang === returnSpeechLang(interaction.detectedCode)
       ) || voices.find((voice) => voice.lang === "en-UK");
-      console.log(speech.voice, speech.lang)
+    console.log(speech.voice, speech.lang);
+    speechSynthesis.speak(speech);
   }
   return (
     <div
@@ -44,7 +44,6 @@ export default function BotMessageBlock({ interaction }) {
         marginRight: "auto",
       }}
       aria-live="polite"
-      
     >
       <div
         className="flex gap-3 items-start"

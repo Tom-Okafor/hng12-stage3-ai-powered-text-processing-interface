@@ -121,6 +121,17 @@ export default function ChatInterfaceMain() {
         },
       ]);
     } catch (error) {
+      setChatInteractions((prevState) => [
+        ...prevState,
+        {
+          type: "bot",
+          message: `Sorry, we are unable to return your summary at this time.`,
+          detectedLanguage: null,
+          detectedCode: null,
+          certainty: null,
+          time: getTime(),
+        },
+      ]);
       throw error.message;
     } finally {
       setLoading(false);
