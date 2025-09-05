@@ -3,8 +3,8 @@ import { handleLanguageDetector } from "../utils/handleLanguageDetector";
 export async function handleSummarizer(text) {
   try {
     if (
-      !("ai" in self && "summarizer" in self.ai) ||
-      (await self.ai.summarizer.capabilities()).available === "no"
+      !("Summarizer" in self) ||
+      (await Summarizer.availability()) === "unavailable"
     ) {
       console.warn("Summarizer not available.");
       return "Sorry, this feature is not supported.";
@@ -24,7 +24,7 @@ export async function handleSummarizer(text) {
 
     async function createAndSummarize() {
       try {
-        const summarizer = await self.ai.summarizer.create(options);
+        const summarizer = await Summarizer.create(options);
         const summary = await summarizer.summarize(text);
         return summary;
       } catch (error) {
