@@ -1,19 +1,23 @@
 export async function handleLanguageDetector(text) {
   // check if the language detector feature is supported
 
-  if (!("ai" in self && "languageDetector" in self.ai)) {
+  if (!("LanguageDetector" in self)) {
     return "sorry, this feature is not supported";
   }
 
-  // check if feature is available
-  const languageDetectorCapabilities =
-    await self.ai.languageDetector.capabilities();
-  const canDetect = languageDetectorCapabilities.available;
+  //   // check if feature is available
+  //   const languageDetectorCapabilities =
+  //     await self.ai.languageDetector.capabilities();
+  //   const canDetect = languageDetectorCapabilities.available;
 
-  if (canDetect === "no")
+  //   if (canDetect === "no")
+  //     return "Sorry this feature is not available for your device.";
+  const languageDetectorAvailability = await LanguageDetector.availability();
+  if (languageDetectorAvailability === "unavailable") {
     return "Sorry this feature is not available for your device.";
+  }
 
-  const detector = await self.ai.languageDetector.create();
+  const detector = await LanguageDetector.create();
 
   // get the detected language and confidence level
 
